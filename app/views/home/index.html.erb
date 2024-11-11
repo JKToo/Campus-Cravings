@@ -1,0 +1,11 @@
+<%# <h1>Home#index</h1> %>
+    <div class="home_text_card">
+        <p class="home_text"> Hey <% @user %>Tell other profiles about your experience and recommendations. Help other cravers decide what they want to eat or should try! </p>
+        <% puts "PROFILES ", @profile%>
+        <button class="home_post_button"> Post </button>
+    </div>  
+<p>Find me in app/views/home/index.html.erb</p>
+
+<% if @user%>
+<%= @user.email%>
+<%end%>

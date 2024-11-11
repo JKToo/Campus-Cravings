@@ -1,0 +1,106 @@
+.sign_in_card{
+  height: 80vh;
+  width: 25vw;
+    padding: 3%;
+  background-color: black;
+    box-shadow: 0px 1px 1px 0px;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+}
+
+.img_logo{
+    margin-top: -60px;
+}
+
+.alert2{
+    font-family: Josefin;
+    background-color: #f8d7da;
+    text-align: center;
+    margin-left: 0%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding: 10px 10px 10px 10px;
+    width: 100%;
+    border-radius: 5px;
+    min-height: 20%;
+    color: #721c24;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    margin-right: 40%;
+    font-size: 20px;
+    border-color: #f5c6cb;
+}
+
+.titled{
+    margin-top: -30%;
+    font-size: 20px;
+  }
+
+.tester{
+    background-image: url("bg-tester.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 100vh;
+    
+}
+.title{
+    font-family: Josefin Bold;
+    font-size: 30px
+}
+
+.signin_page{
+    position:fixed;
+    padding:0;
+    margin:0;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    /* background:rgba(196, 196, 196, 0.5); */
+    background-image: url("bg-tester.png");
+}
+
+.background_card{
+    width: 70%;
+}
+
+.alignment{
+    margin-left: -7%;
+}
+
+.decoration{
+    text-align: start;
+    margin-left: 14%;
+    font-size: 25px;
+}
+
+.decoration_field{
+    font-size: 15px;
+    min-width: 70%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-bottom: 2%;
+}
+
+.actions{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    width: 100%;
+    text-align: center;
+}
+
+.btn{
+    margin-top: 5%;
+    font-size: 20px;
+    margin-bottom: 5%;
+    padding: 1% 4% 1% 4%;
+    border-radius: 12px;
+    color: white;
+    background-color: #8A2BE2;
+    box-shadow: none;
+}
+
+.colors{
+    color:white;
+    
+}

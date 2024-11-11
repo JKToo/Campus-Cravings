@@ -1,0 +1,35 @@
+<div class="flex">
+    <h2 class="logo">Campus Cravings</h2> 
+    
+    <div class="nav">
+        <ul class = "nav-items" >
+            <strong>            
+                <% if Current.user %>
+                     <li> 
+                    <%= link_to_active_class('Feed', 'active', root_path, class:'') %>
+                    </li>
+                    <li> 
+                        <%= link_to_active_class('Popular', 'active', home_popular_path, class:'') %>
+                    </li>
+                    <li> 
+                        <%= link_to_active_class('Order', 'active', home_order_path, class:'') %>
+                    </li>
+                    <li> 
+                        <%= link_to_active_class('Profile', 'active', home_about_path, class:'') %>
+                    </li>
+                    <li>
+                        <%= link_to "Sign Out", logout_path, data: { "turbo-method": :delete }%>                    
+                    </li>
+                    
+                <%# <%else 
+                    <li>
+                        <%= link_to_active_class('Sign In', 'active', sign_in_path, class:'')                     
+                    </li>
+                    <li>
+                        <%= link_to_active_class('Sign Up', 'active', sign_up_path, class:'')                     
+                    </li> %>
+                <%end%>
+            </strong>
+        </ul>
+    </div>
+</div>

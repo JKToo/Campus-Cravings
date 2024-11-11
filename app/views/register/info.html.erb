@@ -13,33 +13,40 @@
 
   <div>
     <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :fname %>
+    <%= form.text_field :first_name %>
   </div>
 
   <div>
     <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :lname %>
+    <%= form.text_field :last_name %>
   </div>
 
   <div>
-    <%= form.label :display, style: "display: block" %>
+    <%= form.label :tag, style: "display: block" %>
     <%= form.text_field :tag %>
   </div>
 
   <div>
-    <%= form.label :school, style: "display: block" %>
-    <%= form.text_field :school %>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email, placeholder:"name@email.com" %>
   </div>
 
   <div>
-    <%= form.label :Distributor, style: "display: block" %>
-    <%= form.check_box :status %>
+    <%= form.label :school, style: "display: block" %>
+    <%= form.text_field :school, placeholder:"School" %>
   </div>
- <div>
+
+  <div>
+    <%= form.label :delivery, style: "display: block" %>
+    <%= form.check_box :delivery %>
+  </div>
+
+  <div>
     <%= form.label :user_id, id: :profile_user_id, style: "display: block" %>
     <%= form.number_field :user_id, value: Current.user.id, type: :hidden %>
   </div>
   <div>
     <%= form.submit %>
   </div>
+
 <% end %>

@@ -1,9 +1,9 @@
-class ProfileController < ApplicationController
+class Users < ApplicationController
   before_action :set_profile, only: %i[ show edit update destroy ]
 
   # GET /profiles or /profiles.json
   def index
-    @profiles = Profile.all
+    @users = User.all
   end
 
   # GET /profiles/1 or /profiles/1.json
@@ -12,7 +12,7 @@ class ProfileController < ApplicationController
 
   # GET /profiles/new
   def new
-    @profile = Profile.new
+    @users = User.new
   end
 
   # GET /profiles/1/edit
@@ -21,15 +21,15 @@ class ProfileController < ApplicationController
 
   # POST /profiles or /profiles.json
   def create
-    @profile = Profile.new(profile_params)
+    @users = User.new(profile_params)
 
     respond_to do |format|
-      if @profile.save
-        format.html { redirect_to @profile, notice: "Profile was successfully created." }
-        format.json { render :show, status: :created, location: @profile }
+      if @users.save
+        format.html { redirect_to @users, notice: "Profile was successfully created." }
+        format.json { render :show, status: :created, location: @users }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @profile.errors, status: :unprocessable_entity }
+        format.json { render json: @users.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -37,7 +37,7 @@ class ProfileController < ApplicationController
   # PATCH/PUT /profiles/1 or /profiles/1.json
   def update
     respond_to do |format|
-      if @profile.update(profile_params)
+      if @users.update(profile_params)
         format.html { redirect_to @profile, notice: "Profile was successfully updated." }
         format.json { render :show, status: :ok, location: @profile }
       else
@@ -49,7 +49,7 @@ class ProfileController < ApplicationController
 
   # DELETE /profiles/1 or /profiles/1.json
   def destroy
-    @profile.destroy!
+    @users.destroy!
 
     respond_to do |format|
       format.html { redirect_to profiles_path, status: :see_other, notice: "Profile was successfully destroyed." }
@@ -60,11 +60,11 @@ class ProfileController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      @profile = Profile.find(params[:id])
+      @users = Profile.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:fname, :lname, :tag, :school, :status, :user_id, :school_id)
+      params.require(:profile).permit(:name, :tag, :email)
     end
 end

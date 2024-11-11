@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
   resources :profiles
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  get "sign_up", to: "register#new"
+  post "sign_up", to: "register#create"
+  delete "logout", to: "sessions#destroy"
+  get "sign_in", to: "sessions#sign_in"
+  post "sign_in", to: "sessions#create"
+  get "info", to: "profiles#new"
+  get "home/about"
+  get "home/popular"
+  get "home/order"
+  # get "home/signin"
+  get "home/abouter"
+  root "home#index"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check

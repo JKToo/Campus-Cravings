@@ -1,0 +1,38 @@
+
+<div class="tester">
+<div class="m-auto sign_in_card">
+
+  <%= form_with url:sign_in_path do |f| %>
+    <%=image_tag("CC2.png",  class:"mb-4 img_logo",  alt:"", width:"400", height:"400") %>
+    <h3 class="h3 mb-3 fw-normal titled spacing">Please sign in</h3>
+
+    <div class="form-floating ">
+      <%# <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"> %>
+            <%=f.email_field :email, class: "form-control", id:"floatingInput", autofocus: true, autocomplete: "email", placeholder: "placeholder text"%>
+            <%= f.label :email, for:"floatingInput"%>          
+
+    </div>
+    <div class="form-floating ">   
+      <%# <input type="password" class="form-control" id="floatingPassword" placeholder="Password"> %>
+       <%= f.password_field :password, class: "form-control",  id:"floatingInput", placeholder: "placeholder text"%>
+
+       <%= f.label :password, for: "floatingInput"  %>
+
+    </div>
+
+    <div class="form-check my-3 alignment ">
+      <%= f.submit "Login",  class:"btn btn-primary w-100 "%>
+        <%=  link_to "Sign Up", sign_up_path, class:"btn  w-100 colors"%>    
+    </div>
+
+     <% if notice %>
+           <p class="notice"><%= notice %></p> 
+    <% end %>
+    
+    <% if alert %>
+       <p class="alert2 alert-warning "><%= alert %></p>
+      <%end%>
+  <% end %>
+</div>
+
+</div>  

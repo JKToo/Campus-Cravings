@@ -1,0 +1,32 @@
+<div class="signin_page">  
+
+  <div class="sign_in_card">
+  <h2 class="title">Campus Cravings</h2>
+  <%= form_with url:sign_in_path do |f| %>
+    <div class="field ">
+      <div class="decoration">
+          <%= f.label :email %><br />
+      </div>
+      <div class="decoration_field">
+          <%=f.email_field :email, class: "decoration_field", autofocus: true, autocomplete: "email" %>
+      </div>
+
+    </div>
+
+    <div class="field">
+      <div class="decoration">
+        <%= f.label :password %><br />
+      </div>    
+        <%= f.password_field :password,  class: "decoration_field", autocomplete: "current-password" %>
+    </div>
+
+
+
+    <div class="actions">
+      <%= f.submit "Login", class:"btn" %>
+    </div>
+
+  <% end %>
+
+  </div>
+</div>
