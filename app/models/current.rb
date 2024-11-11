@@ -1,3 +1,3 @@
 class Current < ActiveSupport::CurrentAttributes
-  attribute :user, :profile
+  attribute :user, :profile, :school
 end

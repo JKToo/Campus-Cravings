@@ -16,7 +16,8 @@
 
   <p>
     <strong>School:</strong>
-    <%= profile.school %>
+    <%@schoolname = School.find_by(id: profile.school_id)%>
+    <%= @schoolname.name %>
   </p>
 
   <p>
