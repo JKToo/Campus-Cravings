@@ -36,13 +36,20 @@
 
 </div>
 
-   <%= Current.profile.posting.inspect%>
+   <%Current.profile.posting.inspect%>
    <% @postings = Posting.where(profile_id: Current.profile.id)%>
+
+   
    <br/>
 
-     <% @postings.each do |posting| %>
-    <%= @postings.inspect %>
     <p>
+
+      <% @postings.each do |p| %>
+    <%= p.place %>
+    <%= p.rating %>
+    <%= p.location %>
+    <%= p.description %>
+
     </p>
   <% end %>
 
