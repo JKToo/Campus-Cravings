@@ -1,0 +1,9 @@
+.post_styles{
+    background-color: aqua;
+    margin: 5%;
+}
+
+.post_rows{
+    width: 100vw;
+    display: flex
+}

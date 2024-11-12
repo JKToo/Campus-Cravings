@@ -42,15 +42,26 @@
    
    <br/>
 
-    <p>
-
       <% @postings.each do |p| %>
-    <%= p.place %>
-    <%= p.rating %>
-    <%= p.location %>
-    <%= p.description %>
+<div class="post_rows"> 
+    <div class="card" style="width: 18rem;">
+    <%if p.img.present?%>
+      <%= image_tag(p.img, class: "card-img-top", :alt => "rss feed")%>
+    <%else%>
+      <img class="card-img-top"  alt="Card image cap">
+    <%end%>
 
-    </p>
+      <div class="card-body">
+        <h5 class="card-title">@<%= Current.profile.tag %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= Current.school.name %></h6>
+
+        <h5 class="card-title"><%= p.place %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Experience: <%= p.rating %></h6>
+        <h6 class="card-subtitle mb-2 text-muted"> <%= p.location %></h6>
+        <p class="card-text">    <%= p.description %></p>
+    </div>
+  </div>
+    </div>
   <% end %>
 
 
