@@ -8,7 +8,8 @@
      @<%= Current.profile.tag%>
     </div>  
     <div class="item2_text2">
-      <%= Current.profile.school %> College
+      <%@schoolname = School.find_by(id: Current.profile.school_id)%>
+    <%= @schoolname.name %>
     </div>
 
   </div>  
@@ -20,7 +21,7 @@
 
     <p class="item5_text1">  Posts   </p>
     <p class="item5_text2">  Customer   </p>
-    <%if Current.profile.delivery%>
+    <%if Current.profile.status%>
     <p class="item5_text3"> Distributor   </p>
     <%end%>
   </div>
@@ -32,4 +33,17 @@
   <%# <%= link_to "Back to profiles", profiles_path %> 
 
    <%= button_to "Destroy this profile", Current.profile, method: :delete %> 
+
 </div>
+
+   <%= Current.profile.posting.inspect%>
+   <% @postings = Posting.where(profile_id: Current.profile.id)%>
+   <br/>
+
+     <% @postings.each do |posting| %>
+    <%= @postings.inspect %>
+    <p>
+    </p>
+  <% end %>
+
+

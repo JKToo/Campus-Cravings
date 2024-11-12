@@ -1,0 +1,34 @@
+<h2>Sign up</h2>
+<%= form_with model: @postings, url: add_post_path do |f| %>
+  <div class="field">
+    <%= f.label :place %><br />
+    <%= f.text_field :place, autofocus: true%>
+  </div>
+
+ <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description, autofocus: true%>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br />
+    <%= f.text_field :rating, autofocus: true%>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location, autofocus: true%>
+  </div>
+
+
+<div>
+    <%= f.number_field :profile_id, value: Current.profile.id, type: :hidden %>
+    <%= f.number_field :school_id, value: Current.profile.school_id, type: :hidden %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+
+
+  
+<% end %>
+

@@ -8,7 +8,11 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+Profile.destroy_all
+User.destroy_all
 School.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!('profile')
+ActiveRecord::Base.connection.reset_pk_sequence!('user')
 ActiveRecord::Base.connection.reset_pk_sequence!('school')
 
 

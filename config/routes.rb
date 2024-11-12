@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "sign_in", to: "sessions#sign_in"
   post "sign_in", to: "sessions#create"
   get "info", to: "profiles#new"
+  get "add_post", to: "postings#new"
+  post "add_post", to: "postings#create"
   get "home/about"
   get "home/popular"
   get "home/order"

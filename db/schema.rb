@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_11_013753) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_11_231412) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_013753) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "school_id"
+    t.bigint "profile_id"
+    t.index ["profile_id"], name: "index_postings_on_profile_id"
     t.index ["school_id"], name: "index_postings_on_school_id"
   end
 
@@ -52,6 +54,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_013753) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "postings", "profiles"
   add_foreign_key "postings", "schools"
   add_foreign_key "profiles", "schools"
   add_foreign_key "profiles", "users"
