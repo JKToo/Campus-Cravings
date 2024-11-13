@@ -4,6 +4,20 @@
 }
 
 .post_rows{
-    width: 100vw;
-    display: flex
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
 }
+/* 
+
+@media (min-width: 600px) {
+    .post_rows { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 900px) {
+    .post_rows { grid-template-columns: repeat(3, 1fr); }
+  }
+ */

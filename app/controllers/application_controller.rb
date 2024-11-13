@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
       Current.user = User.find_by(id: session[:user_id])
       Current.profile = Profile.find_by(user_id: session[:user_id])
-      Current.school = School.find_by(id: Current.profile.school_id)
+      # Current.school = School.find_by(id: Current.profile.school_id)
 
     end
   end
