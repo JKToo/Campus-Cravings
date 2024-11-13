@@ -10,10 +10,10 @@
    
    <br/>
    
-<div class="post_rows"> 
+<div class="feed_post_rows"> 
 
       <% @postings.each do |p| %>
-    <div class="card" style="width: 18rem;">
+    <div class="card card_design" style="width: 20rem;">
     <%if p.img.present?%>
       <%= image_tag(p.img, class: "card-img-top", :alt => "rss feed")%>
     <%else%>
