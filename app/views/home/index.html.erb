@@ -3,7 +3,8 @@
     <%@schoolname.name %>
     <div class="home_text_card">
         <p class="home_text"> Hey <% @user %>Tell other profiles about your experience and recommendations. Help other cravers decide what they want to eat or should try! </p>
-        <button class="home_post_button"> Post </button>
+        <%# <button class="home_post_button"> Post </button> %>
+        <%= link_to "Post", add_post_path, class: "home_post_button"%>       
     </div>  
   <%Current.profile.posting.inspect%>
    <% @postings = Posting.where(school_id: Current.profile.school_id)%>
