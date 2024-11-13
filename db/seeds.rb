@@ -18,7 +18,8 @@ ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('schools')
 ActiveRecord::Base.connection.reset_pk_sequence!('postings')
 
-User.create(email: "email@gmail.com", password_digest: BCrypt::Password.create('123'))
+user = User.create(email: "email@gmail.com", password_digest: BCrypt::Password.create('123'))
+user2 = User.create(email: "email2@gmail.com", password_digest: BCrypt::Password.create('123'))
 
 p "Created #{User.count} User "
 
@@ -81,14 +82,23 @@ School.create([
 p "Created #{School.count} college entries."
 
 
-Profile.create(fname: "Tester", lname: "User", tag: "TUser",  status: true, user_id: 1, school_id: 1)
+temp = Profile.create(fname: "Tester", lname: "User", tag: "TUser",  status: true, user_id: user.id, school_id: 37)
+temp2 = Profile.create(fname: "Hello", lname: "World", tag: "HWorld",  status: true, user_id: user2.id, school_id: 37)
 p "Created #{Profile.count} Profile "
 
 
 Posting.create([
-  { place: "iHOP", description: "Place was a great spot. Breakfast food always hits the spot", rating: 4, location: "34 Street, New York, NY", school_id: 1, profile_id: 1, img: "https://therussofirm.com/wp-content/uploads/2023/09/mcdonalds-meal-the-russo-firm.jpg" },
-  { place: "McDonalds", description: "Place has become too expensive. Everything is overpriced and they served me very little. Staff was also rude.", rating: 1, location: "Random Street, Miami, Florida", school_id: 1, profile_id: 1, img: "" },
-  { place: "Papa Johns", description: "They do indeed do it better at Papa Johns. I got their Bogo and their pizza was nice and fresh", rating: 4, location: "151 Street, New York, NY", school_id: 1, profile_id: 1, img: ""  }
-])
+  { place: "iHOP", description: "Place was a great spot. Breakfast food always hits the spot", rating: 4, location: "34 Street, New York, NY", school_id: temp.school_id, profile_id: temp.id, img: "https://therussofirm.com/wp-content/uploads/2023/09/mcdonalds-meal-the-russo-firm.jpg" },
+  { place: "Sushi", description: "Sushi was nice and fresh - A little bit pricey but could have been worse.", rating: 3, location: "34 Street, New York, NY", school_id: temp2.school_id, profile_id: temp2.id, img: "https://therussofirm.com/wp-content/uploads/2023/09/mcdonalds-meal-the-russo-firm.jpg" },
+
+
+  { place: "McDonalds", description: "Place has become too expensive. Everything is overpriced and they served me very little. Staff was also rude.", rating: 1, location: "Random Street, Miami, Florida", school_id: temp.school_id, profile_id: temp.id, img: "" },
+  { place: "Dunkin Donuts", description: "Still one of the most affordable coffees you can find around here. Get the Dunkin App so you can use their offers.", rating: 4, location: "Random Street, Miami, Florida", school_id: temp2.school_id, profile_id: temp2.id, img: "" },
+
+
+  { place: "Papa Johns", description: "They do indeed do it better at Papa Johns. I got their Bogo and their pizza was nice and fresh", rating: 4, location: "151 Street, New York, NY", school_id: temp.school_id, profile_id: temp.id, img: ""  },
+  { place: "Subway", description: "Do not reccomend... Their food gave me a bad stomach ache. Would not reccommend", rating: 1, location: "151 Street, New York, NY", school_id: temp2.school_id, profile_id: temp2.id, img: ""  }
+
+  ])
 
 p "Created #{Posting.count} posts"

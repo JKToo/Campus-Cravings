@@ -1,11 +1,37 @@
 <%# <h1>Home#index</h1> %>
+  <%@schoolname = School.find_by(id: Current.profile.school_id)%>
+    <%@schoolname.name %>
     <div class="home_text_card">
         <p class="home_text"> Hey <% @user %>Tell other profiles about your experience and recommendations. Help other cravers decide what they want to eat or should try! </p>
-        <% puts "PROFILES ", @profile%>
         <button class="home_post_button"> Post </button>
     </div>  
-<p>Find me in app/views/home/index.html.erb</p>
+  <%Current.profile.posting.inspect%>
+   <% @postings = Posting.where(school_id: Current.profile.school_id)%>
+   
+   <br/>
+   
+<div class="post_rows"> 
 
-<% if @user%>
-<%= @user.email%>
-<%end%>
+      <% @postings.each do |p| %>
+    <div class="card" style="width: 18rem;">
+    <%if p.img.present?%>
+      <%= image_tag(p.img, class: "card-img-top", :alt => "rss feed")%>
+    <%else%>
+      <%= image_tag("https://royalmahal.co.uk/wp-content/uploads/2023/01/indian-restaurant-scaled-e1670322083921-1024x692.jpg", class: "card-img-top", :alt => "rss feed")%>
+    <%end%>
+    <% @postingUser = Profile.where(id: p.profile_id)%>
+
+      <div class="card-body">
+        <h5 class="card-title">@<%= p.profile.tag %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= @schoolname.name %></h6>
+
+        <h5 class="card-title"><%= p.place %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">Experience: <%= p.rating %></h6>
+        <h6 class="card-subtitle mb-2 text-muted"> <%= p.location %></h6>
+        <p class="card-text">    <%= p.description %></p>
+    </div>
+  </div>
+  <% end %>
+
+    </div>
+
