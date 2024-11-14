@@ -9,8 +9,6 @@ class HomeController < ApplicationController
     #
 
 
-
-
     else
       redirect_to sign_in_path
     end

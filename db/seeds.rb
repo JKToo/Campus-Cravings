@@ -8,6 +8,22 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require 'faker'
+ require "uri"
+ require "net/http"
+def apiImgHelper
+  url = URI.parse("https://foodish-api.com/api/")
+
+  http = Net::HTTP.new(url.host, url.port)
+  http.use_ssl = true
+
+  request = Net::HTTP::Get.new(url)
+
+  response = http.request(request)
+
+  data = JSON.parse(response.body)
+
+  @imgData = data["image"]
+end
 
 Posting.destroy_all
 Profile.destroy_all
@@ -105,11 +121,9 @@ p "Created #{Profile.count} Profile "
 
 5.times do |i|
 Posting.create(
-  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: 1, img: Faker::LoremFlickr.image(search_terms: [ 'food' ])
-)
+  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: 1, img: apiImgHelper)
 Posting.create(
-  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: 2
-)
+  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: 2, img: apiImgHelper)
 end
 
 # Posting.create([

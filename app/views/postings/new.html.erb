@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>Tell us about your experience</h2>
 <%= form_with model: @postings, url: add_post_path do |f| %>
   <div class="field">
     <%= f.label :place %><br />
@@ -17,7 +17,10 @@
     <%= f.label :location %><br />
     <%= f.text_field :location, autofocus: true%>
   </div>
-
+  <div class="field">
+    <%= f.label :img, 'Image Link' %><br />
+    <%= f.text_field :img, autofocus: true%>
+  </div>
 
 <div>
     <%= f.number_field :profile_id, value: Current.profile.id, type: :hidden %>
@@ -25,7 +28,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Post" %>
   </div>
 
 
