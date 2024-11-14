@@ -11,14 +11,15 @@
    
    <br/>
    
+<%# <%=@testData%>
 <div class="feed_post_rows"> 
 
       <% @postings.each do |p| %>
     <div class="card card_design" style="width: 20rem;">
     <%if p.img.present?%>
-      <%= image_tag(p.img, class: "card-img-top", :alt => "rss feed")%>
+      <%= image_tag(apiImgHelper, class: "card-img-top", :alt => "rss feed")%>
     <%else%>
-      <%= image_tag("https://royalmahal.co.uk/wp-content/uploads/2023/01/indian-restaurant-scaled-e1670322083921-1024x692.jpg", class: "card-img-top", :alt => "rss feed")%>
+      <%= image_tag(apiImgHelper, class: "card-img-top", :alt => "rss feed")%>
     <%end%>
     <% @postingUser = Profile.where(id: p.profile_id)%>
 
