@@ -38,6 +38,17 @@
 .card-img-top{
   max-height: 300px;
 }
+
+
+.tab-pane:not(.active) {
+  display: none;
+}
+
+.card-body-height{
+  min-height: 700px;
+  max-height: 700px;
+  overflow: auto;
+}
 /* 
 
 @media (min-width: 600px) {

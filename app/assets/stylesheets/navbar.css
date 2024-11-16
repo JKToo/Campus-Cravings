@@ -87,6 +87,11 @@
 }
  
 
+.actives{
+  background-color: transparent;
+  padding-bottom: 10px;
+  text-decoration: none;
+}
 
 .active{
   background-color: transparent;
@@ -118,3 +123,5 @@ a {
     /* margin-bottom: 5px; */
     color: rgb(0, 0, 0);
   }
+
+  
