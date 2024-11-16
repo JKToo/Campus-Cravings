@@ -32,8 +32,8 @@
     font-family: Josefin;
     margin: 0 auto;
     display: grid;
-    gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    gap: 10rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, auto));
 }
 
 .order_completed_rows{

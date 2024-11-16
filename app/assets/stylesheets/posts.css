@@ -12,8 +12,6 @@
 
 }
 
-.card_design{
-}
 
 .feed_post_rows{
   max-width: 80vw;
@@ -28,13 +26,25 @@
   font-family: Josefin;
 }
 
-
+.card{
+  --bs-card-spacer-x: 0rem;
+  --bs-card-spacer-y: 0rem;
+}
 .card-img-top-about{
   max-height: 450px;
 }
 
 .card-img-top{
   max-height: 300px;
+}
+
+.card-title{
+  margin-top: 20px;
+}
+
+.card-title, .card-subtitle, .card-text{
+  margin-left: 20px;
+  margin-right: 10px;
 }
 
 

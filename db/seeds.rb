@@ -133,6 +133,10 @@ p "Created #{Posting.count} posts"
 
 5.times do |i|
   Order.create(
-    restaurant: Faker::Restaurant.name, order: Faker::Food.description, total: rand(5.00...25.00), tip: rand(1.00...10.00), pending: true, address: Faker::Address.full_address, profile_id: 1)
-end
+    restaurant: Faker::Restaurant.name, order: Faker::Food.description, total: rand(5.00...25.00), tip: rand(1.00...10.00), pending: true, address: Faker::Address.full_address, profile_id: 1, school_id: 37)
+  Order.create(
+      restaurant: Faker::Restaurant.name, order: Faker::Food.description, total: rand(5.00...25.00), tip: rand(1.00...10.00), pending: true, address: Faker::Address.full_address, profile_id: 2, school_id: 37)
+  Order.create(
+        restaurant: Faker::Restaurant.name, order: Faker::Food.description, total: rand(5.00...25.00), tip: rand(1.00...10.00), pending: true, address: Faker::Address.full_address, profile_id: 3, school_id: 37)
+  end
 p "Created #{Order.count} orders"

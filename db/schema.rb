@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_16_065149) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_16_181817) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,7 +24,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_16_065149) do
     t.datetime "updated_at", null: false
     t.bigint "profile_id"
     t.string "address"
+    t.bigint "school_id"
     t.index ["profile_id"], name: "index_orders_on_profile_id"
+    t.index ["school_id"], name: "index_orders_on_school_id"
   end
 
   create_table "postings", force: :cascade do |t|
@@ -69,6 +71,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_16_065149) do
   end
 
   add_foreign_key "orders", "profiles"
+  add_foreign_key "orders", "schools"
   add_foreign_key "postings", "profiles"
   add_foreign_key "postings", "schools"
   add_foreign_key "profiles", "schools"

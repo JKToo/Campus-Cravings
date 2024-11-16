@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "info", to: "profiles#new"
   get "add_post", to: "postings#new"
   post "add_post", to: "postings#create"
+  get "home/request"
   get "home/about"
   get "home/popular"
   get "home/order"
