@@ -21,7 +21,9 @@
 <div>
     <%= f.number_field :profile_id, value: Current.profile.id, type: :hidden %>
 </div>
-
+<div>
+    <%= f.check_box :pending, value: true, type: :hidden %>
+</div>
   <div class="actions">
     <%= f.submit "Submit Order" %>
   </div>

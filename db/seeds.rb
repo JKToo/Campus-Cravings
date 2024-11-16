@@ -25,6 +25,7 @@ def apiImgHelper
   @imgData = data["image"]
 end
 
+Order.destroy_all
 Posting.destroy_all
 Profile.destroy_all
 User.destroy_all
@@ -34,6 +35,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('profiles')
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('schools')
 ActiveRecord::Base.connection.reset_pk_sequence!('postings')
+ActiveRecord::Base.connection.reset_pk_sequence!('orders')
 
 
 userArr = {}
@@ -106,8 +108,6 @@ p "Created #{School.count} college entries."
 profileArr={}
 (1..6).each do |i|
   profileArr[i] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: i, school_id: 37)
-  profileArr[i] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: i, school_id: 37)
-  profileArr[i] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: i, school_id: 37)
 end
 # temp = Profile.create(fname: "Tester", lname: "User", tag: "TUser",  status: true, user_id: user.id, school_id: 37)
 # temp2 = Profile.create(fname: "Hello", lname: "World", tag: "HWorld",  status: true, user_id: user2.id, school_id: 37)
@@ -146,3 +146,12 @@ end
 #   ])
 
 p "Created #{Posting.count} posts"
+
+
+
+
+5.times do |i|
+  Order.create(
+    restaurant: Faker::Restaurant.name, order: Faker::Food.description, total: rand(5.00...25.00), tip: rand(1.00...10.00), pending: true, profile_id: 1)
+end
+p "Created #{Order.count} orders"

@@ -50,7 +50,13 @@
   overflow: auto;
 }
 
+.tab-pane{
+  text-decoration: none;
 
+}
+.navGen.active , .tab-pane.active{
+  display : block;
+}
 .tab-pane:active{
   text-decoration: none;
 }

@@ -1,0 +1,9 @@
+.order_status_pending{
+    margin-left: 10px;
+    color:rgb(248, 59, 42)
+}
+
+.order_status_completed{
+    margin-left: 10px;
+    color:rgb(30, 211, 24)
+}

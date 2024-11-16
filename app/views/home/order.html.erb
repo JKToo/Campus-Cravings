@@ -1,6 +1,33 @@
 <%if Current.user%>
+    <div class="home_text_card">
+        <p class="home_text"> Hey <%= Current.profile.fname %>, This is the list of your previous orders </p>
+        <%# <button class="home_post_button"> Post </button> %>
+        <%= link_to "Place New Order", order_path, class: "home_post_button"%>       
+
+    </div>  
+<div class="feed_post_rows"> 
+
     <%@orders = Order.where(profile_id: Current.profile.id)%>
     <%@orders.each do |o|%>
-    <%= o.restaurant%>
+    
+    <div class="card card_design" style="width: 25rem;">
+        <div class="card-body card-body-height" >         
+            <h5 class="card-title"><%= o.restaurant %></h5>        
+            <h6 class="card-subtitle mb-2 text-muted" style="display:flex">Status: 
+                <%if o.pending%>
+                  <div class="order_status_pending"> Pending </div>
+                <%else%>
+                  <div class="order_status_completed">  Completed</div>
+                <% end %>
+            </h6>
+
+            <h6 class="card-subtitle mb-2 text-muted">$<%= o.tip %></h6>
+            <h6 class="card-subtitle mb-2 text-muted"> $<%= o.total %></h6>
+            <p class="card-text">    <%=  o.order%></p>
+        </div>
+    </div>
+
+
     <%end%>
 <%end%>
+</div>
