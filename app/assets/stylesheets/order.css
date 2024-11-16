@@ -16,6 +16,7 @@
   }
 
   .card-title-order{
+    margin-top: 10px;
     text-align: center;
   }
 
@@ -34,6 +35,20 @@
     display: grid;
     gap: 10rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+}
+
+
+.card_action_button{
+    background-color: #8A2BE2;
+    box-shadow: none;
+    font-family: Josefin ;
+    font-size: 18px;
+    outline: none;
+    padding: 5px 30px 5px 30px;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    margin-left: 20px;
 }
 
 .order_completed_rows{

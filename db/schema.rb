@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_16_181817) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_16_194032) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_16_181817) do
     t.bigint "profile_id"
     t.string "address"
     t.bigint "school_id"
+    t.integer "delivery_status", default: [], array: true
     t.index ["profile_id"], name: "index_orders_on_profile_id"
     t.index ["school_id"], name: "index_orders_on_school_id"
   end

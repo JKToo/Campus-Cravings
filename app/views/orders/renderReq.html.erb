@@ -1,5 +1,11 @@
 <%if Current.profile.status%>
-
+ <% if notice %>
+           <p class="notice1"><%= notice %></p> 
+    <% end %>
+    
+    <% if alert %>
+       <p class="alert2 alert-warning "><%= alert %></p>
+      <%end%>
     <div class="order_section">
     <% @ordersPending = Order.where( school_id:  Current.profile.school_id, pending: true)%>
         <h3>Available Jobs</h3>
@@ -10,8 +16,10 @@
         <% @ordersPending.each do |o|%>
         <% @profiles = Profile.where(id: o.profile_id)%>
         <% @profiles.each do |p| %>
+<%= form_with(url: request_path, method: "patch") do |f| %>
+
             <div class="card card_design" style="width: 25rem;">
-                <div class="card-body">
+                <div class="card-body card-body-requests">
                     <h5 class="card-title-order"><%= o.restaurant %></h5>  
                     <h6 class="card-subtitle mb-2 text-muted card-title" style="text-align:center"><%= o.address%></h6>    
                     <hr/>
@@ -20,9 +28,15 @@
                     <h6 class="card-subtitle mb-2 text-muted">Tip: $<%=o.tip.round(2)%></h6>
                     <hr/>
                     <p class="card-text">    <%=  o.order%></p>
-                    <%= link_to "Take Order", order_path, class: "home_post_button"%>  
+                    <div>
+                    <%= f.number_field :delivery_status, value: 2, type: :hidden %>
+                    <%= f.number_field :id, value: o.id, type: :hidden %>
+                    <%= f.number_field :profile_id, value: Current.profile.id, type: :hidden %>
+                </div>
+                        <%= f.button "Take Order", class: "card_action_button"%>
                 </div>
             </div>
+<%end%>
 
         <% end %>
         <%end%>
@@ -36,7 +50,7 @@
         <hr/>
     </div>
         <div class="order_completed_rows"> 
-        <% @ordersDone = Order.where( school_id:  Current.profile.school_id, pending: false)%>
+        <% @ordersDone = Order.where( school_id:  Current.profile.school_id, pending: false, delivery_status: [Current.profile.id, 0])%>
 
 
         <% @ordersDone.each do |o|%>
@@ -58,4 +72,11 @@
         </div>
         <% end %>
         <%end%>
-<%end%>
+
+ 
+
+
+
+  
+<% end %>
+
