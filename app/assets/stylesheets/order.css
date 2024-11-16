@@ -18,3 +18,29 @@
   .card-title-order{
     text-align: center;
   }
+
+.order_section{
+  font-family: Josefin Bold;
+  width: 80vw;
+  margin-left: 10vw;
+  margin-top: 3%;
+}
+
+
+.order_pending_rows{
+  max-width: 80vw;
+    font-family: Josefin;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+}
+
+.order_completed_rows{
+  max-width: 80vw;
+    font-family: Josefin;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+}

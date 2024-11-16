@@ -3,34 +3,71 @@
         <p class="home_text"> Hey <%= Current.profile.fname %>, This is the list of your previous orders </p>
         <%# <button class="home_post_button"> Post </button> %>
         <%= link_to "Place New Order", order_path, class: "home_post_button"%>       
-
-    </div>  
-<div class="feed_post_rows"> 
+    </div > 
 
     <%@orders = Order.where(profile_id: Current.profile.id)%>
-    <%@orders.each do |o|%>
-    
-    <div class="card card_design" style="width: 25rem;">
-        <div class="card-body card-order-height" >         
-            <h5 class="card-title-order"><%= o.restaurant %></h5>  
-            <h6 class="card-subtitle mb-2 text-muted card-title" style="text-align:center"><%= o.address%></h6>    
-            <hr/>
-            <h6 class="card-subtitle mb-2 text-muted card-title" style="text-align:center">Placed at <%= o.created_at.strftime(("%H:%M"))%> : <%= o.created_at.strftime("%b. %d, %Y")%></h6>    
+    <%@ordersPending = Order.where(profile_id: Current.profile.id, pending:true)%>
+    <%@ordersComplete = Order.where(profile_id: Current.profile.id, pending:false)%>
 
-            <h6 class="card-subtitle mb-2 text-muted" style="display:flex">Status: 
-                <%if o.pending%>
-                  <div class="order_status_pending"> Pending </div>
-                <%else%>
-                  <div class="order_status_completed">  Completed</div>
-                <% end %>
-            </h6>
-            <h6 class="card-subtitle mb-2 text-muted"> Total: $<%= o.total.round(2) %></h6>
-            <h6 class="card-subtitle mb-2 text-muted">Tip: $<%= o.tip.round(2) %></h6>
-            <p class="card-text">    <%=  o.order%></p>
+    <div class="order_section">
+        <h3>Pending orders</h3>
+        <hr/>
+    </div>
+
+    <div class="order_pending_rows"> 
+    <%@ordersPending.each do |oP|%>
+        <div class="card card_design" style="width: 25rem;">
+            <div class="card-body card-order-height" >         
+                <h5 class="card-title-order"><%= oP.restaurant %></h5>  
+                <h6 class="card-subtitle mb-2 text-muted card-title" style="text-align:center"><%= oP.address%></h6>    
+                <hr/>
+                <h6 class="card-subtitle mb-2 text-muted card-title">Placed at <%= oP.created_at.strftime(("%H:%M"))%> : <%= oP.created_at.strftime("%b. %d, %Y")%></h6>    
+
+                <h6 class="card-subtitle mb-2 text-muted" style="display:flex">Status: 
+                <div class="order_status_pending"> Pending </div>
+                </h6>
+                <h6 class="card-subtitle mb-2 text-muted"> Total: $<%= oP.total.round(2) %></h6>
+                <h6 class="card-subtitle mb-2 text-muted">Tip: $<%= oP.tip.round(2) %></h6>
+                <hr/>
+                <p class="card-text">    <%=  oP.order%></p>
+                <%= link_to "Cancel Order", order_path, class: "home_post_button"%>  
+            </div>
         </div>
+    <%end%>
     </div>
 
 
-    <%end%>
+    <div class="order_section">
+        <h3>Previously placed orders</h3>
+        <hr/>
+        
+        <div class="order_completed_rows"> 
+        <%@ordersComplete.each do |oC|%>
+            <div class="card card_design" style="width: 25rem;">
+                <div class="card-body card-order-height" >         
+                    <h5 class="card-title-order"><%= oC.restaurant %></h5>  
+                    <h6 class="card-subtitle mb-2 text-muted card-title" style="text-align:center"><%= oC.address%></h6>    
+                    <hr/>
+                    <h6 class="card-subtitle mb-2 text-muted card-title" >Placed at <%= oC.created_at.strftime(("%H:%M"))%> : <%= oC.created_at.strftime("%b. %d, %Y")%></h6>    
+                    <h6 class="card-subtitle mb-2 text-muted"> Delivered by: User</h6>
+
+                    <h6 class="card-subtitle mb-2 text-muted" style="display:flex">Status: 
+                        <div class="order_status_completed"> Completed </div>
+                    </h6>
+                    <h6 class="card-subtitle mb-2 text-muted"> Total: $<%= oC.total.round(2) %></h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Tip: $<%= oC.tip.round(2) %></h6>
+                    <hr/>
+                    <p class="card-text">    <%=  oC.order%></p>
+                </div>
+            </div>
+        <%end%>
+        </div>
+    </div>
+
+    
+    
+    
+
+
 <%end%>
 </div>
