@@ -17,6 +17,11 @@
                     <li> 
                         <%= link_to_active_class('Profile', 'active', home_about_path, class:'') %>
                     </li>
+                        <%if Current.profile.status%>
+                            <li> 
+                                <%= link_to_active_class('Requests', 'active', home_about_path, class:'') %>
+                            </li>
+                        <%end%>
                     <li>
                         <%= link_to "Sign Out", logout_path, data: { "turbo-method": :delete }%>                    
                     </li>

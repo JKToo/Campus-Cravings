@@ -45,9 +45,10 @@
 <div class="post_rows"> 
 
       <% @postings.each do |p| %>
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 25rem;">
     <%if p.img.present?%>
-      <%= image_tag(p.img, class: "card-img-top", :alt => "rss feed")%>
+    <%# p.img %>
+      <%= image_tag(p.img, class: "card-img-top-about", :alt => "rss feed")%>
     <%else%>
       <%= image_tag("https://royalmahal.co.uk/wp-content/uploads/2023/01/indian-restaurant-scaled-e1670322083921-1024x692.jpg", class: "card-img-top", :alt => "rss feed")%>
     <%end%>

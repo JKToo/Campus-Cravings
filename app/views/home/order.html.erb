@@ -1,1 +1,36 @@
-<h1> About us </h1> 
+<%if Current.user%>
+    <div class="home_text_card">
+        <p class="home_text"> Hey <%= Current.profile.fname %>, This is the list of your previous orders </p>
+        <%# <button class="home_post_button"> Post </button> %>
+        <%= link_to "Place New Order", order_path, class: "home_post_button"%>       
+
+    </div>  
+<div class="feed_post_rows"> 
+
+    <%@orders = Order.where(profile_id: Current.profile.id)%>
+    <%@orders.each do |o|%>
+    
+    <div class="card card_design" style="width: 25rem;">
+        <div class="card-body card-order-height" >         
+            <h5 class="card-title-order"><%= o.restaurant %></h5>  
+            <h6 class="card-subtitle mb-2 text-muted card-title" style="text-align:center"><%= o.address%></h6>    
+            <hr/>
+            <h6 class="card-subtitle mb-2 text-muted card-title" style="text-align:center">Placed at <%= o.created_at.strftime(("%H:%M"))%> : <%= o.created_at.strftime("%b. %d, %Y")%></h6>    
+
+            <h6 class="card-subtitle mb-2 text-muted" style="display:flex">Status: 
+                <%if o.pending%>
+                  <div class="order_status_pending"> Pending </div>
+                <%else%>
+                  <div class="order_status_completed">  Completed</div>
+                <% end %>
+            </h6>
+            <h6 class="card-subtitle mb-2 text-muted"> Total: $<%= o.total.round(2) %></h6>
+            <h6 class="card-subtitle mb-2 text-muted">Tip: $<%= o.tip.round(2) %></h6>
+            <p class="card-text">    <%=  o.order%></p>
+        </div>
+    </div>
+
+
+    <%end%>
+<%end%>
+</div>

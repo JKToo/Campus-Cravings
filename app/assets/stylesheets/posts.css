@@ -4,11 +4,11 @@
 }
 
 .post_rows{
-    max-width: 1200px;
+    max-width: 80vw;
     margin: 0 auto;
     display: grid;
     gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
 
 }
 
@@ -18,11 +18,49 @@
 }
 
 .feed_post_rows{
-    max-width: 1500px;
+  max-width: 80vw;
+    font-family: Josefin;
     margin: 0 auto;
     display: grid;
-    gap: 4rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+}
+
+.card-text{
+  font-family: Josefin;
+}
+
+
+.card-img-top-about{
+  max-height: 450px;
+}
+
+.card-img-top{
+  max-height: 300px;
+}
+
+
+.tab-pane:not(.active) {
+  display: none;
+}
+
+.card-body-height{
+  min-height: 700px;
+  max-height: 700px;
+  overflow: auto;
+}
+
+
+
+.tab-pane{
+  text-decoration: none;
+
+}
+.navGen.active , .tab-pane.active{
+  display : block;
+}
+.tab-pane:active{
+  text-decoration: none;
 }
 /* 
 

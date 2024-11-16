@@ -8,7 +8,24 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require 'faker'
+ require "uri"
+ require "net/http"
+def apiImgHelper
+  url = URI.parse("https://foodish-api.com/api/")
 
+  http = Net::HTTP.new(url.host, url.port)
+  http.use_ssl = true
+
+  request = Net::HTTP::Get.new(url)
+
+  response = http.request(request)
+
+  data = JSON.parse(response.body)
+
+  @imgData = data["image"]
+end
+
+Order.destroy_all
 Posting.destroy_all
 Profile.destroy_all
 User.destroy_all
@@ -18,16 +35,15 @@ ActiveRecord::Base.connection.reset_pk_sequence!('profiles')
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('schools')
 ActiveRecord::Base.connection.reset_pk_sequence!('postings')
+ActiveRecord::Base.connection.reset_pk_sequence!('orders')
 
 
 userArr = {}
 
-userArr[0] = User.create(email: "email@gmail.com", password_digest: BCrypt::Password.create('123'))
-userArr[1] = User.create(email: "email1@gmail.com", password_digest: BCrypt::Password.create('123'))
-# userArr[2] = User.create(email: "email2@gmail.com", password_digest: BCrypt::Password.create('123'))
-# userArr[3] = User.create(email: "email3@gmail.com", password_digest: BCrypt::Password.create('123'))
-# userArr[4] = User.create(email: "email4@gmail.com", password_digest: BCrypt::Password.create('123'))
-
+(1..6).each do |i|
+userArr[i] = User.create(email: "email#{i}@gmail.com", password_digest: BCrypt::Password.create('123'))
+  # userArr[1] = User.create(email: "email1@gmail.com", password_digest: BCrypt::Password.create('123'))
+end
 
 p "Created #{User.count} User "
 
@@ -90,40 +106,33 @@ School.create([
 p "Created #{School.count} college entries."
 
 profileArr={}
-5.times do |i|
-  profileArr[0] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: 1, school_id: 37)
-  profileArr[1] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: 2, school_id: 37)
+(1..6).each do |i|
+  profileArr[i] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: i, school_id: 37)
 end
-# temp = Profile.create(fname: "Tester", lname: "User", tag: "TUser",  status: true, user_id: user.id, school_id: 37)
-# temp2 = Profile.create(fname: "Hello", lname: "World", tag: "HWorld",  status: true, user_id: user2.id, school_id: 37)
 p "Created #{Profile.count} Profile "
 
 
 
 
+5.times do |i|
+  Posting.create(
+  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  Posting.create(
+  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  Posting.create(
+  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  Posting.create(
+  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  Posting.create(
+  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+end
+p "Created #{Posting.count} posts"
+
+
 
 
 5.times do |i|
-Posting.create(
-  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: 1, img: Faker::LoremFlickr.image(search_terms: [ 'food' ])
-)
-Posting.create(
-  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: 2
-)
+  Order.create(
+    restaurant: Faker::Restaurant.name, order: Faker::Food.description, total: rand(5.00...25.00), tip: rand(1.00...10.00), pending: true, address: Faker::Address.full_address, profile_id: 1)
 end
-
-# Posting.create([
-#   { place: "iHOP", description: "Place was a great spot. Breakfast food always hits the spot", rating: 4, location: "34 Street, New York, NY", school_id: temp.school_id, profile_id: temp.id, img: "https://therussofirm.com/wp-content/uploads/2023/09/mcdonalds-meal-the-russo-firm.jpg" },
-#   { place: "Sushi", description: "Sushi was nice and fresh - A little bit pricey but could have been worse.", rating: 3, location: "34 Street, New York, NY", school_id: temp2.school_id, profile_id: temp2.id, img: "https://therussofirm.com/wp-content/uploads/2023/09/mcdonalds-meal-the-russo-firm.jpg" },
-
-
-#   { place: "McDonalds", description: "Place has become too expensive. Everything is overpriced and they served me very little. Staff was also rude.", rating: 1, location: "Random Street, Miami, Florida", school_id: temp.school_id, profile_id: temp.id, img: "" },
-#   { place: "Dunkin Donuts", description: "Still one of the most affordable coffees you can find around here. Get the Dunkin App so you can use their offers.", rating: 4, location: "Random Street, Miami, Florida", school_id: temp2.school_id, profile_id: temp2.id, img: "" },
-
-
-#   { place: "Papa Johns", description: "They do indeed do it better at Papa Johns. I got their Bogo and their pizza was nice and fresh", rating: 4, location: "151 Street, New York, NY", school_id: temp.school_id, profile_id: temp.id, img: ""  },
-#   { place: "Subway", description: "Do not reccomend... Their food gave me a bad stomach ache. Would not reccommend", rating: 1, location: "151 Street, New York, NY", school_id: temp2.school_id, profile_id: temp2.id, img: ""  }
-
-#   ])
-
-p "Created #{Posting.count} posts"
+p "Created #{Order.count} orders"

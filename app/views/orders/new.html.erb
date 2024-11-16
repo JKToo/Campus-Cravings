@@ -1,0 +1,34 @@
+<h2>Tell us about your experience</h2>
+<%= form_with model: @orders, url: order_path do |f| %>
+  <div class="field">
+    <%= f.label :restaurant %><br />
+    <%= f.text_field :restaurant, autofocus: true%>
+  </div>
+
+ <div class="field">
+    <%= f.label :order %><br />
+    <%= f.text_field :order, autofocus: true%>
+  </div>
+  <div class="field">
+    <%= f.label :total %><br />
+    <%= f.number_field :total, autofocus: true%>
+  </div>
+  <div class="field">
+    <%= f.label :tip %><br />
+    <%= f.text_field :tip, autofocus: true%>
+  </div>
+
+<div>
+    <%= f.number_field :profile_id, value: Current.profile.id, type: :hidden %>
+</div>
+<div>
+    <%= f.check_box :pending, value: true, type: :hidden %>
+</div>
+  <div class="actions">
+    <%= f.submit "Submit Order" %>
+  </div>
+
+
+  
+<% end %>
+
