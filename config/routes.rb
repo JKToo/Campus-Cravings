@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   delete "logout", to: "sessions#destroy"
   get "sign_in", to: "sessions#sign_in"
   post "sign_in", to: "sessions#create"
+  get "order", to: "orders#new"
+  post "order", to: "orders#create"
   get "info", to: "profiles#new"
   get "add_post", to: "postings#new"
   post "add_post", to: "postings#create"

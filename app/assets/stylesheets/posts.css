@@ -49,6 +49,11 @@
   max-height: 700px;
   overflow: auto;
 }
+
+
+.tab-pane:active{
+  text-decoration: none;
+}
 /* 
 
 @media (min-width: 600px) {

@@ -8,7 +8,6 @@
     </div>  
   <%Current.profile.posting.inspect%>
    <% @postings = Posting.where(school_id: Current.profile.school_id)%>
-   
    <br/>
    
 <%# <%=@testData%>
@@ -22,7 +21,7 @@
     <div class="card-header">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link " id="<%= "abox#{p.id}" %>-tab" data-bs-toggle="tab" href="#<%= "abox#{p.id}" %>" role="tab" aria-controls="<%= "abox#{p.id}" %>" aria-selected="true">Home</a>
+            <a class="nav-link active" id="<%= "abox#{p.id}" %>-tab" data-bs-toggle="tab" href="#<%= "abox#{p.id}" %>" role="tab" aria-controls="<%= "abox#{p.id}" %>" aria-selected="true">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="<%= "bbox#{p.id}" %>-tab" data-bs-toggle="tab" href="#<%= "bbox#{p.id}" %>" role="tab" aria-controls="<%= "bbox#{p.id}" %>" aria-selected="false">Profile</a>
