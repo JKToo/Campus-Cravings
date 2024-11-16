@@ -38,12 +38,10 @@ ActiveRecord::Base.connection.reset_pk_sequence!('postings')
 
 userArr = {}
 
-userArr[0] = User.create(email: "email@gmail.com", password_digest: BCrypt::Password.create('123'))
-userArr[1] = User.create(email: "email1@gmail.com", password_digest: BCrypt::Password.create('123'))
-# userArr[2] = User.create(email: "email2@gmail.com", password_digest: BCrypt::Password.create('123'))
-# userArr[3] = User.create(email: "email3@gmail.com", password_digest: BCrypt::Password.create('123'))
-# userArr[4] = User.create(email: "email4@gmail.com", password_digest: BCrypt::Password.create('123'))
-
+(1..6).each do |i|
+userArr[i] = User.create(email: "email#{i}@gmail.com", password_digest: BCrypt::Password.create('123'))
+  # userArr[1] = User.create(email: "email1@gmail.com", password_digest: BCrypt::Password.create('123'))
+end
 
 p "Created #{User.count} User "
 
@@ -106,9 +104,10 @@ School.create([
 p "Created #{School.count} college entries."
 
 profileArr={}
-5.times do |i|
-  profileArr[0] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: 1, school_id: 37)
-  profileArr[1] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: 2, school_id: 37)
+(1..6).each do |i|
+  profileArr[i] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: i, school_id: 37)
+  profileArr[i] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: i, school_id: 37)
+  profileArr[i] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: i, school_id: 37)
 end
 # temp = Profile.create(fname: "Tester", lname: "User", tag: "TUser",  status: true, user_id: user.id, school_id: 37)
 # temp2 = Profile.create(fname: "Hello", lname: "World", tag: "HWorld",  status: true, user_id: user2.id, school_id: 37)
@@ -120,10 +119,16 @@ p "Created #{Profile.count} Profile "
 
 
 5.times do |i|
-Posting.create(
-  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: 1, img: apiImgHelper)
-Posting.create(
-  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: 2, img: apiImgHelper)
+  Posting.create(
+  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  Posting.create(
+  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  Posting.create(
+  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  Posting.create(
+  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  Posting.create(
+  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
 end
 
 # Posting.create([

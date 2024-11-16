@@ -1,3 +1,42 @@
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">..2.</div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">.1..</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <%# <h1>Home#index</h1> %>
   <%@schoolname = School.find_by(id: Current.profile.school_id)%>
     <%@schoolname.name %>
@@ -10,21 +49,19 @@
    <% @postings = Posting.where(school_id: Current.profile.school_id)%>
    
    <br/>
-<div id="content"></div>
    
 <%# <%=@testData%>
 <div class="feed_post_rows"> 
 
       <% @postings.each do |p| %>
-      <div id=<%= "box#{p.id}" %>>
   <div class="card card_design" style="width: 25rem;">
     <div class="card-header">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
-            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#<%= "box#{p.id}" %>" role="tab" aria-controls="<%= "box#{p.id}" %>" aria-selected="true">Home</a>
+            <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#<%= "box#{p.id}" %>" role="tab" aria-controls="<%= "box#{p.id}" %>" aria-selected="false">Profile</a>
+            <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
@@ -36,9 +73,9 @@
     
     <% @postingUser = Profile.where(id: p.profile_id)%>
 
-      <div class="card-body" >
+      <div class="card-body">
         
-        <div class="tab-pane fade show active" id=<%= "box#{p.id}" %> role="tabpanel" aria-labelledby="<%= "box#{p.id}" %>-tab" onClick="changeDivContent(this)">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <%if p.img.present?%>
       <%= image_tag(p.img, class: "card-img-top", :alt => "rss feed")%>
     <%else%>
@@ -53,7 +90,7 @@
         <p class="card-text">    <%= p.description %></p>
         </div>
 
-        <div class="tab-pane fade show " id=<%= "box#{p.id}" %> role="tabpanel" aria-labelledby="<%= "box#{p.id}" %>-tab" onClick="changeDivContent(this)">
+        <div class="tab-pane fade show " id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <h5 class="card-title">@<%= p.profile.tag %></h5>
         <h6 class="card-subtitle mb-2 text-muted">@@@@@@@@@@@@@@@</h6>
 
@@ -64,7 +101,7 @@
         </div>
     </div>
   </div>
-  </div>
   <% end %>
+
     </div>
 
