@@ -11,8 +11,10 @@
     <%@orders.each do |o|%>
     
     <div class="card card_design" style="width: 25rem;">
-        <div class="card-body card-body-height" >         
-            <h5 class="card-title"><%= o.restaurant %></h5>        
+        <div class="card-body card-order-height" >         
+            <h5 class="card-title-order"><%= o.restaurant %></h5>  
+            <h6 class="card-subtitle mb-2 text-muted card-title" style="text-align:center"><%= o.address%></h6>    
+            <hr/>
             <h6 class="card-subtitle mb-2 text-muted" style="display:flex">Status: 
                 <%if o.pending%>
                   <div class="order_status_pending"> Pending </div>
@@ -20,9 +22,8 @@
                   <div class="order_status_completed">  Completed</div>
                 <% end %>
             </h6>
-
-            <h6 class="card-subtitle mb-2 text-muted">$<%= o.tip %></h6>
-            <h6 class="card-subtitle mb-2 text-muted"> $<%= o.total %></h6>
+            <h6 class="card-subtitle mb-2 text-muted"> Total: $<%= o.total.round(2) %></h6>
+            <h6 class="card-subtitle mb-2 text-muted">Tip: $<%= o.tip.round(2) %></h6>
             <p class="card-text">    <%=  o.order%></p>
         </div>
     </div>
