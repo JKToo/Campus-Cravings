@@ -15,6 +15,8 @@
             <h5 class="card-title-order"><%= o.restaurant %></h5>  
             <h6 class="card-subtitle mb-2 text-muted card-title" style="text-align:center"><%= o.address%></h6>    
             <hr/>
+            <h6 class="card-subtitle mb-2 text-muted card-title" style="text-align:center">Placed at <%= o.created_at.strftime(("%H:%M"))%> : <%= o.created_at.strftime("%b. %d, %Y")%></h6>    
+
             <h6 class="card-subtitle mb-2 text-muted" style="display:flex">Status: 
                 <%if o.pending%>
                   <div class="order_status_pending"> Pending </div>
