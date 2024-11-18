@@ -107,7 +107,7 @@ p "Created #{School.count} college entries."
 
 profileArr={}
 (1..6).each do |i|
-  profileArr[i] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: i, school_id: 37)
+  profileArr[i] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: i, school_id: 37, avatar: Faker::Avatar.image)
 end
 p "Created #{Profile.count} Profile "
 
