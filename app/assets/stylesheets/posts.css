@@ -7,7 +7,7 @@
     max-width: 80vw;
     margin: 0 auto;
     display: grid;
-    gap: 1rem;
+    gap: 8rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, auto));
 
 }
@@ -74,6 +74,22 @@
 .tab-pane:active{
   text-decoration: none;
 }
+
+.card-avatar{
+  width:80px;
+}
+
+.avatar-div{
+  position:absolute; 
+  left: 20%; 
+  top: 30%;
+}
+
+
+
+
+
+
 /* 
 
 @media (min-width: 600px) {
