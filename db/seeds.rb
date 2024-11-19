@@ -25,17 +25,24 @@ def apiImgHelper
   @imgData = data["image"]
 end
 
+
+ActiveStorage::Attachment.delete_all
+ActiveStorage::VariantRecord.delete_all
 Order.destroy_all
 Posting.destroy_all
 Profile.destroy_all
 User.destroy_all
 School.destroy_all
+ActiveStorage::Blob.delete_all
 
 ActiveRecord::Base.connection.reset_pk_sequence!('profiles')
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('schools')
 ActiveRecord::Base.connection.reset_pk_sequence!('postings')
 ActiveRecord::Base.connection.reset_pk_sequence!('orders')
+ActiveRecord::Base.connection.reset_pk_sequence!('active_storage_blobs')
+ActiveRecord::Base.connection.reset_pk_sequence!('active_storage_attachments')
+ActiveRecord::Base.connection.reset_pk_sequence!('active_storage_variant_records')
 
 
 userArr = {}
@@ -112,20 +119,80 @@ end
 p "Created #{Profile.count} Profile "
 
 
-
-
 5.times do |i|
-  Posting.create(
+  random = 'food'+rand(0...10).to_s+'.png'
+  random2 = 'food'+rand(0...10).to_s+'.png'
+  random3 = 'food'+rand(0...10).to_s+'.png'
+  p1= Posting.create(
   place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
-  Posting.create(
+
+  p2 = Posting.create(
   place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
-  Posting.create(
+
+
+  p3 = Posting.create(
   place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
-  Posting.create(
+
+
+  p4 = Posting.create(
   place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
-  Posting.create(
+
+
+  p5 = Posting.create(
   place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+
+
+  p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(0...10).to_s+'.png'
+  random2 = 'food'+rand(0...10).to_s+'.png'
+  random3 = 'food'+rand(0...10).to_s+'.png'
+  p2.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p2.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p2.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(0...10).to_s+'.png'
+  random2 = 'food'+rand(0...10).to_s+'.png'
+  random3 = 'food'+rand(0...10).to_s+'.png'
+  p3.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p3.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p3.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(0...10).to_s+'.png'
+  random2 = 'food'+rand(0...10).to_s+'.png'
+  random3 = 'food'+rand(0...10).to_s+'.png'
+  p4.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p4.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p4.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(0...10).to_s+'.png'
+  random2 = 'food'+rand(0...10).to_s+'.png'
+  random3 = 'food'+rand(0...10).to_s+'.png'
+  p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  # p2.images.attach(
+  # io:  File.open(Rails.root.join('app/assets/images/'+random)),
+  # filename: random
+  # )
+  # p3.images.attach(
+  # io:  File.open(Rails.root.join('app/assets/images/'+random)),
+  # filename: random
+  # )
+  # p4.images.attach(
+  # io:  File.open(Rails.root.join('app/assets/images/'+random)),
+  # filename: random
+  # )
+  # p5.images.attach(
+  # io:  File.open(Rails.root.join('app/assets/images/'+random)),
+  # filename: random
+  # )
+
+  # p1.save
+  # p2.save
+  # p3.save
+  # p4.save
+  # p5.save
 end
+
 p "Created #{Posting.count} posts"
 
 

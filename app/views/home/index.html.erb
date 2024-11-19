@@ -7,12 +7,16 @@
     </div>  
   <%Current.profile.posting.inspect%>
    <% @postings = Posting.where(school_id: Current.profile.school_id)%>
-   <br/>
-   
+   <% @postings2 = Posting.find_by(id: 36)%>
+   <br/> 
+
+
 <div class="feed_post_rows"> 
 
       <% @postings.shuffle.each do |p| %>
     <% @postingUser = Profile.where(id: p.profile_id)%>
+<%@imageHolder = Posting.find_by(id: p.id)%>
+
   <div id=<%= "box#{p.id}" %>>
     <div class="card " style="width: 25rem;">
         <div class="card-header">
@@ -20,7 +24,7 @@
               <li class="nav-item">
                 <a class="nav-link active" id="<%= "abox#{p.id}" %>-tab" data-bs-toggle="tab" href="#<%= "abox#{p.id}" %>" role="tab" aria-controls="<%= "abox#{p.id}" %>" aria-selected="true">Post</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item"> 
                 <a class="nav-link" id="<%= "bbox#{p.id}" %>-tab" data-bs-toggle="tab" href="#<%= "bbox#{p.id}" %>" role="tab" aria-controls="<%= "bbox#{p.id}" %>" aria-selected="false">Images</a>
               </li>
               <li class="nav-item">
@@ -34,35 +38,38 @@
 
         <div class="card-body card-body-height" >        
           <div class="tab-pane fade show active" id=<%= "abox#{p.id}" %> role="tabpanel" aria-labelledby="<%= "abox#{p.id}" %>-tab">
-          <div>
-            <%if p.img.present?%>
-              <%= image_tag(p.img, class: "card-img-top", :alt => "API Img")%>
-              <%else%>
-                <%= image_tag("", class: "card-img-top", :alt => "")%>
-            <%end%>
-            <div class="avatar-div">
-              <%= image_tag(p.profile.avatar, class: "card-avatar", :alt => "API Img")%>
+            <div>
+              <%if p.img.present?%>
+                <%= image_tag(p.img, class: "card-img-top", :alt => "API Img")%>
+                <%else%>
+                  <%= image_tag("", class: "card-img-top", :alt => "")%>
+              <%end%>
+              <%# <div class="avatar-div">
+                <%= image_tag(p.profile.avatar, class: "card-avatar", :alt => "API Img")
+              </div> %>
             </div> 
-          </div>
 
-            <h5 class="card-title">@<%= p.profile.tag %></h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= @schoolname.name %></h6>
-
-            <h5 class="card-title"><%= p.place %></h5>
-            <h6 class="card-subtitle mb-2 text-muted">Experience: <%= p.rating %></h6>
-            <h6 class="card-subtitle mb-2 text-muted"> <%= p.location %></h6>
-            <p class="card-text">    <%= p.description %></p>
-            
-          </div>
-
-          <div class="tab-pane fade  " id=<%= "bbox#{p.id}" %> role="tabpanel" aria-labelledby="<%= "bbox#{p.id}" %>-tab">
               <h5 class="card-title">@<%= p.profile.tag %></h5>
-              <h6 class="card-subtitle mb-2 text-muted">@@@@@@@@@@@@@@@</h6>
+              <h6 class="card-subtitle mb-2 text-muted"><%= @schoolname.name %></h6>
 
               <h5 class="card-title"><%= p.place %></h5>
               <h6 class="card-subtitle mb-2 text-muted">Experience: <%= p.rating %></h6>
               <h6 class="card-subtitle mb-2 text-muted"> <%= p.location %></h6>
-              <p class="card-text">    <%= p.description %></p>
+            <p class="card-text">    <%= p.description %></p>            
+          </div>
+
+
+
+
+          <div class="tab-pane fade  " id=<%= "bbox#{p.id}" %> role="tabpanel" aria-labelledby="<%= "bbox#{p.id}" %>-tab">
+              <h5 class="card-title"></h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+                <%@imageHolder.images_thumbnail.each do |i|%>
+                <hr/>
+                <%= link_to image_tag(i), i%>
+                <%end%>
+</h6>
+
           </div>
           
         </div>
@@ -83,7 +90,7 @@
       </div>
       
     </div>
+   <%end%>
     
-  <% end %>
 </div>
 
