@@ -3,6 +3,9 @@ class PostingsController < ApplicationController
     @postings = Posting.all
   end
 
+  def show
+  end
+
   def new
     @postings = Posting.new
   end
@@ -10,17 +13,23 @@ class PostingsController < ApplicationController
   def create
     @postings = Posting.new(posting_params)
 
-    if @postings.save
-      redirect_to home_about_path, notice: "Post Successfully created"
 
-    else
-      render :new, notice: "Error"
+    respond_to do |format|
+      if @postings.save
+        # redirect_to home_about_path, notice: "Post Successfully created"
+        format.html { redirect_to home_about_path, notice: "Post was successfully created." }
+        format.json { render :show, status: :created, location: @postings }
+      else
+        format.html { render :new, notice: "Error" }
+        format.json { render json: home_about_path.errors, status: :unprocessable_entity }
+      end
     end
+
   end
 
 
   private
   def posting_params
-    params.require(:posting).permit(:place, :description, :rating, :location, :school_id, :profile_id)
+    params.require(:posting).permit(:place, :description, :rating, :location, :school_id, :profile_id, images: [])
   end
 end

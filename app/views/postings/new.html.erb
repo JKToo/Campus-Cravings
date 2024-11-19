@@ -22,6 +22,10 @@
     <%= f.text_field :img, autofocus: true%>
   </div>
 
+  <div class="field">
+      <%= f.label :images, 'Showcase' %><br />
+      <%= f.file_field :images, multiple: true%>
+    </div>
 <div>
     <%= f.number_field :profile_id, value: Current.profile.id, type: :hidden %>
     <%= f.number_field :school_id, value: Current.profile.school_id, type: :hidden %>

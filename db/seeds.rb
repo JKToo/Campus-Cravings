@@ -36,7 +36,8 @@ ActiveRecord::Base.connection.reset_pk_sequence!('users')
 ActiveRecord::Base.connection.reset_pk_sequence!('schools')
 ActiveRecord::Base.connection.reset_pk_sequence!('postings')
 ActiveRecord::Base.connection.reset_pk_sequence!('orders')
-
+ActiveStorage::Attachment.delete_all
+ActiveStorage::Blob.delete_all
 
 userArr = {}
 
