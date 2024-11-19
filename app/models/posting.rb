@@ -7,7 +7,7 @@ class Posting < ApplicationRecord
 
   def images_thumbnail
     images.map do |image|
-      image.variant(resize_to_limit: [150,150]).processed
+      image.variant(resize_to_limit: [ 300, 300 ]).processed
     end
   end
 end
