@@ -120,9 +120,9 @@ p "Created #{Profile.count} Profile "
 
 
 5.times do |i|
-  random = 'food'+rand(0...10).to_s+'.png'
-  random2 = 'food'+rand(0...10).to_s+'.png'
-  random3 = 'food'+rand(0...10).to_s+'.png'
+  random = 'food'+rand(0...11).to_s+'.png'
+  random2 = 'food'+rand(0...11).to_s+'.png'
+  random3 = 'food'+rand(0...11).to_s+'.png'
   p1= Posting.create(
   place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
 
