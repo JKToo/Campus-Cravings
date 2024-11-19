@@ -119,9 +119,10 @@ end
 p "Created #{Profile.count} Profile "
 
 
-
 5.times do |i|
   random = 'food'+rand(0...10).to_s+'.png'
+  random2 = 'food'+rand(0...10).to_s+'.png'
+  random3 = 'food'+rand(0...10).to_s+'.png'
   p1= Posting.create(
   place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
 
@@ -141,10 +142,33 @@ p "Created #{Profile.count} Profile "
   place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
 
 
-  # p1.images.attach(
-  #   io:  File.open(Rails.root.join('app/assets/images/'+random)),
-  #   filename: random
-  # )
+  p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(0...10).to_s+'.png'
+  random2 = 'food'+rand(0...10).to_s+'.png'
+  random3 = 'food'+rand(0...10).to_s+'.png'
+  p2.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p2.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p2.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(0...10).to_s+'.png'
+  random2 = 'food'+rand(0...10).to_s+'.png'
+  random3 = 'food'+rand(0...10).to_s+'.png'
+  p3.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p3.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p3.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(0...10).to_s+'.png'
+  random2 = 'food'+rand(0...10).to_s+'.png'
+  random3 = 'food'+rand(0...10).to_s+'.png'
+  p4.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p4.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p4.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(0...10).to_s+'.png'
+  random2 = 'food'+rand(0...10).to_s+'.png'
+  random3 = 'food'+rand(0...10).to_s+'.png'
+  p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
   # p2.images.attach(
   # io:  File.open(Rails.root.join('app/assets/images/'+random)),
   # filename: random
