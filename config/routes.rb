@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   resources :profiles
+  
+  resources :postings do
+    resources :comments, only: [:create]
+  end
   get "sign_up", to: "register#new"
   post "sign_up", to: "register#create"
   delete "logout", to: "sessions#destroy"

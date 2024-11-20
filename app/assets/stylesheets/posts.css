@@ -90,8 +90,29 @@
   text-align: center;
 }
 
+.comments-field{
+  width: 90%;
+}
+.comments-submit{
+  width: 10%;
+}
+.card-comment{
+  width: 100%;
+  position: absolute;
+  bottom: 5%;
+}
 
+.input-group-submit{
+  float:right;
+  background-color: #8A2BE2;
+  border-radius: 5px 20px 5px;
+  color:white;
+}
 
+.input-group-submit:hover{
+  border-radius: 20px 5px 20px;
+  background-color: #FF8911;
+}
 /* 
 
 @media (min-width: 600px) {

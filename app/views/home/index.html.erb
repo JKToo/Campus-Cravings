@@ -28,7 +28,7 @@
                 <a class="nav-link" id="<%= "bbox#{p.id}" %>-tab" data-bs-toggle="tab" href="#<%= "bbox#{p.id}" %>" role="tab" aria-controls="<%= "bbox#{p.id}" %>" aria-selected="false">Images</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Profile</a>
+                <a class="nav-link" id="<%= "cbox#{p.id}" %>-tab" data-bs-toggle="tab" href="#<%= "cbox#{p.id}" %>" role="tab" aria-controls="<%= "cbox#{p.id}" %>" aria-selected="false">Comments</a>
               </li>
           </ul>
         </div>
@@ -66,9 +66,17 @@
                 <hr/>
                 <%= link_to image_tag(i), i%>
                 <%end%>
-</h6>
-
+              </h6>
           </div>
+
+          <div class="tab-pane fade  " id=<%= "cbox#{p.id}" %> role="tabpanel" aria-labelledby="<%= "cbox#{p.id}" %>-tab">
+
+              <h5 class="card-title"> <%=render p.comment%></h5>
+              <div  class="card-comment">
+              <%= render partial: 'comments/form', locals: {postings: p.id}%>
+          </div>
+          </div>
+          
           
         </div>
           <%@day = ((DateTime.now - p.created_at.to_datetime)).to_i%>
