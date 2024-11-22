@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post "add_post", to: "postings#create"
   get "request", to: "orders#renderReq"
   patch "request", to: "orders#update"
+  post "add_comment", to: "comments#create"
   get "home/about"
   get "home/popular"
   get "home/order"

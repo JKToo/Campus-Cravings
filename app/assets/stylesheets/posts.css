@@ -123,14 +123,16 @@
   background-color: #5f9cff;
   color:white;
   border-bottom-right-radius: 0px;
-
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .card-content:hover{
   border-radius: 20px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 0px;
   border-top-right-radius: 0px;
   border-bottom-left-radius: 0px;
-  border-color: #8A2BE2;
+  border-color: #ffffff;
 }
 
 .comments-posted-avatar{

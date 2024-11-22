@@ -1,4 +1,10 @@
-<%# <h1>Home#index</h1> %>
+<%# <h1>Home#index</h1> %><% if notice %>
+           <p class="notice1"><%= notice %></p> 
+    <% end %>
+    
+    <% if alert %>
+       <p class="alert2 alert-warning "><%= alert %></p>
+      <%end%>
   <%@schoolname = School.find_by(id: Current.profile.school_id)%>
     <%@schoolname.name %>
     <div class="home_text_card">
@@ -72,7 +78,7 @@
           <div class="tab-pane fade  " id=<%= "cbox#{p.id}" %> role="tabpanel" aria-labelledby="<%= "cbox#{p.id}" %>-tab">
               <p class="card-subtitle"> <%=render p.comment%></p>
             <div  class="card-comment">
-              <%= render partial: 'comments/form', locals: {postings: p.id}%>
+              <%= render partial: 'comments/form', locals: {posting_id: p.id, profile_id: Current.profile.id}%>
             </div>
           </div>
           
