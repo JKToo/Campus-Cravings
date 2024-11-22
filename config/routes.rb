@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   resources :profiles
+  
+  resources :postings do
+    resources :comments, only: [:create]
+  end
   get "sign_up", to: "register#new"
   post "sign_up", to: "register#create"
   delete "logout", to: "sessions#destroy"
@@ -13,6 +17,7 @@ Rails.application.routes.draw do
   post "add_post", to: "postings#create"
   get "request", to: "orders#renderReq"
   patch "request", to: "orders#update"
+  post "add_comment", to: "comments#create"
   get "home/about"
   get "home/popular"
   get "home/order"

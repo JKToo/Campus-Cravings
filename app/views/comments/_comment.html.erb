@@ -1,0 +1,28 @@
+<div class="card-height">
+   <%@day = ((DateTime.now - comment.profile.created_at.to_datetime)).to_i%>
+          <%@hours = ((DateTime.now - comment.profile.created_at.to_datetime) * 24 ).to_i%>
+          <%@minutes = ((DateTime.now - comment.profile.created_at.to_datetime) * 24 * 60).to_i%>
+          
+    <div class="comments-posted-avatar">
+        <%= image_tag(comment.profile.avatar, class: "comment-avatar circle")%>
+    </div>
+    <div class="comments-posted-text">
+    <div class="card card-content">        
+        <div class="row">
+        <p><%=comment.profile.fname%>     -  
+            <%if @minutes < 59%>
+                 <%=@minutes %> minutes ago
+            <%elsif @hours < 24%>
+                 <%=@hours %> hours ago
+            <% else %>
+                 <%=@day %> days ago
+            <%end%>
+        </p>
+         <p><%=comment.content%></p>
+    </div>
+
+    </div>
+    
+    
+    </div>
+</div>

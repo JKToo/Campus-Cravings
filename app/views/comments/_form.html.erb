@@ -1,0 +1,31 @@
+<%# 
+<form action="<%= posting_comments_path(postings)">
+
+    <div class="input-group-append ">
+        <input class="input-group-text input-group-submit" type="submit" value="Submit" id="basic-addon2">
+    </div>
+
+    <div class="input-group ">
+    <textarea name="comment[content]" type="text" class="form-control" placeholder="Add a comment..." 
+    aria-label="Recipient's username" aria-describedby="basic-addon2" id=<%:content</textarea>
+    
+    </div>
+</form>  %>
+Profile: <%=profile_id%>
+Posting: <%=posting_id%>
+
+<%= form_with model: @comments, url: add_comment_path do |form|%>
+
+    <div>
+        <%=form.submit class:"input-group-text input-group-submit"%>
+    </div>
+    <div>
+        <%= form.text_field :content, class: "form-control", placeholder: "Add a comment..." %>
+    </div> 
+
+    <div>
+    <%= form.number_field :posting_id, value: posting_id, type: :hidden %>
+    <%= form.number_field :profile_id, value: profile_id, type: :hidden %>
+  </div>
+  
+<% end %>

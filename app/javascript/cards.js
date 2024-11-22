@@ -1,9 +1,4 @@
 
-  $('#bologna-list a').on('click', function (e) {
-    e.preventDefault()
-    $(this).tab('show')
-  })
-
 
   function changeDivContent(div) {
     console.log(div)
@@ -13,3 +8,10 @@
     $("#tab-pane li.active").removeClass('active');
     $(this).addClass('active');
  });
+
+
+ $( document ).ready(function() {
+  $(document).on("click", "#close-show", function(){
+    $("#show").hide();
+  });
+});
