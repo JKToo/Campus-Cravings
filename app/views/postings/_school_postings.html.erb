@@ -1,0 +1,53 @@
+
+   <% postings2 = Posting.where(school_id: Current.profile.school_id)%>
+   <% postings = Posting.where(school_id: Current.profile.school_id).includes(:profile, :comment)%>
+
+<div class="feed_post_rows"> 
+    <% postings.each do |p|%>
+    <div id=<%= "box#{p.id}" %>>
+          <div class="card " style="width: 25rem;">
+                <div class="card-header">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                          <li class="nav-item">
+                            <a class="nav-link active" id="<%= "abox#{p.id}" %>-tab" data-bs-toggle="tab" href="#<%= "abox#{p.id}" %>" role="tab" aria-controls="<%= "abox#{p.id}" %>" aria-selected="true">Post</a>
+                          </li>
+                          <li class="nav-item"> 
+                            <a class="nav-link" id="<%= "bbox#{p.id}" %>-tab" data-bs-toggle="tab" href="#<%= "bbox#{p.id}" %>" role="tab" aria-controls="<%= "bbox#{p.id}" %>" aria-selected="false">Images</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" id="<%= "cbox#{p.id}" %>-tab" data-bs-toggle="tab" href="#<%= "cbox#{p.id}" %>" role="tab" aria-controls="<%= "cbox#{p.id}" %>" aria-selected="false">Comments</a>
+                          </li>
+                      </ul>
+                  </div>
+
+          <div class="card-body card-body-height" >       
+                <div class="tab-pane fade show active" id=<%= "abox#{p.id}" %> role="tabpanel" aria-labelledby="<%= "abox#{p.id}" %>-tab">
+                    <%if p.img.present?%>
+                        <%= image_tag(p.img, class: "card-img-top", :alt => "API Img")%>
+                        <%else%>
+                        <%= image_tag("", class: "card-img-top", :alt => "")%>
+                    <%end%>
+                    <h5 class="card-title">@<%= p.profile.tag %></h5>
+                    <h5 class="card-title"><%= p.place %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Experience: <%= p.rating %></h6>
+                    <h6 class="card-subtitle mb-2 text-muted"> <%= p.location %></h6>
+                    <p class="card-text">    <%= p.description %></p>            
+                </div>
+
+                <div class="tab-pane fade  " id=<%= "bbox#{p.id}" %> role="tabpanel" aria-labelledby="<%= "bbox#{p.id}" %>-tab">
+                      <%= render partial: "postings/school_postings_images", locals: {posting_id:  p.id}%>             
+                </div>
+
+                <div class="tab-pane fade  " id=<%= "cbox#{p.id}" %> role="tabpanel" aria-labelledby="<%= "cbox#{p.id}" %>-tab">
+                      <p class="card-subtitle"> <%=render p.comment%></p>
+                  <div  class="card-comment">
+                    <%= render partial: 'comments/form', locals: {posting_id: p.id, profile_id: Current.profile.id}%>
+                  </div>
+                </div>
+         </div>  
+            <%= render partial: 'time_posted', locals: {p:p}%>
+      </div>
+    </div>
+   <%end%>
+    
+</div>

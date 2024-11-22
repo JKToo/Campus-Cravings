@@ -7,6 +7,14 @@ class PostingsController < ApplicationController
     
   end
 
+  def school_postings
+    @postings = Posting.includes(Current.profile.school_id).all
+  end
+
+  def school_postings_images
+    @postings = Posting.all
+  end
+
   def new
     @postings = Posting.new
   end

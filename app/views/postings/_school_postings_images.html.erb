@@ -1,0 +1,10 @@
+<%@imageHolder = Posting.find_by(id: posting_id)%>
+
+<h5 class="card-title"></h5>
+  <h6 class="card-image-section mb-2 text-muted">
+                
+  <%@imageHolder.images_thumbnail.each do |i|%>
+  <hr/>
+  <%= link_to image_tag(i), i%>
+  <%end%>
+</h6>
