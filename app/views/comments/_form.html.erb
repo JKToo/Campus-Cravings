@@ -11,13 +11,11 @@
     
     </div>
 </form>  %>
-Profile: <%=profile_id%>
-Posting: <%=posting_id%>
 
 <%= form_with model: @comments, url: add_comment_path do |form|%>
 
     <div>
-        <%=form.submit class:"input-group-text input-group-submit"%>
+        <%=form.submit "Post", class:"input-group-text input-group-submit"%>
     </div>
     <div>
         <%= form.text_field :content, class: "form-control", placeholder: "Add a comment..." %>

@@ -1,14 +1,19 @@
 class PostingsController < ApplicationController
   def index
-    @postings = Posting.all
+    if params[:tag]
+      @postings = Posting.tagged_with(params[:tag])
+    else
+      @postings = Posting.all
+    end
+    @postings = @postings.page(params[:page])
   end
 
   def show
-    
   end
 
   def school_postings
     @postings = Posting.includes(Current.profile.school_id).all
+    @postings = @postings.page(params[:page])
   end
 
   def school_postings_images
@@ -33,7 +38,6 @@ class PostingsController < ApplicationController
         format.json { render json: home_about_path.errors, status: :unprocessable_entity }
       end
     end
-
   end
 
 

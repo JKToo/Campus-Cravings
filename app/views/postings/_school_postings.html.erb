@@ -1,9 +1,13 @@
 
-   <% postings2 = Posting.where(school_id: Current.profile.school_id)%>
+   <% @postings2 = Posting.where(school_id: Current.profile.school_id)%>
    <% postings = Posting.where(school_id: Current.profile.school_id).includes(:profile, :comment)%>
-
+   <div class="pagination-spacing">
+<%=paginate @feedpostings%>
+</div>
 <div class="feed_post_rows"> 
-    <% postings.each do |p|%>
+
+    <% @feedpostings.each do |p|%>
+
     <div id=<%= "box#{p.id}" %>>
           <div class="card " style="width: 25rem;">
                 <div class="card-header">
