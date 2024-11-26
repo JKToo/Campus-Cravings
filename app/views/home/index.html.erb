@@ -10,6 +10,9 @@
         <%= link_to "Post", add_post_path, class: "home_post_button"%>       
     </div>  
    <br/> 
-    <%= render partial: "postings/school_postings", locals: {postings: @postings}%>                
+
+   <%= turbo_frame_tag :posting do %>
+    <%= render @school_postings%>
+    <%end%>                
   </div>
 

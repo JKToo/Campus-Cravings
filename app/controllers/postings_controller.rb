@@ -1,11 +1,13 @@
 class PostingsController < ApplicationController
+  include Pagy::Backend
+
   def index
-    if params[:tag]
-      @postings = Posting.tagged_with(params[:tag])
-    else
-      @postings = Posting.all
+    @pagy, @school_postings = pagy_countless(Posting.where(school_id: Current.profile.school_id), items: 3)
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream
     end
-    @postings = @postings.page(params[:page])
   end
 
   def show
