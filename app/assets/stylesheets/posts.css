@@ -109,6 +109,14 @@
   color:white;
 }
 
+.pagination-spacing{
+  text-align: center;
+}
+.page{
+  padding-left:10px;
+  padding-right: 5px
+}
+
 .input-group-submit:hover{
   border-radius: 20px 5px 20px;
   background-color: #FF8911;
