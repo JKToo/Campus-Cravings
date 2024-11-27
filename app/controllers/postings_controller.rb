@@ -1,12 +1,14 @@
 class PostingsController < ApplicationController
   include Pagy::Backend
+  allow_browser versions: :modern
+  before_action :set_current_user
 
   def index
-    @pagy, @school_postings = pagy_countless(Posting.where(school_id: Current.profile.school_id), items: 3)
+    @pagy, @postings = pagy_countless(Posting.where(school_id: Current.profile.school_id), limit: 3)
 
     respond_to do |format|
-      format.html
-      format.turbo_stream
+      format.html { render :index }
+      format.turbo_stream { render :index }
     end
   end
 

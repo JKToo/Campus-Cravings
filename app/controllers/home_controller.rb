@@ -8,13 +8,7 @@ class HomeController < ApplicationController
       @user = User.find_by(id: session[:user_id])
       @profile = Profile.find_by(user_id: session[:user_id])
       @feedpostings = Posting.where(school_id: Current.profile.school_id).page(params[:page]).per(8)
-      @postings = Posting.all
-      @pagy, @school_postings = pagy_countless(Posting.where(school_id: Current.profile.school_id), items: 8)
 
-      respond_to do |format|
-        format.html
-        format.turbo_stream
-      end
     # @posting = Posting.find_by(profile_id: Current.profile.id)
     #
 

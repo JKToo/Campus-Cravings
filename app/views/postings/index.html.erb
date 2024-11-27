@@ -10,13 +10,11 @@
     <%= link_to "Post", add_post_path, class: "home_post_button"%>       
 </div>  
 <br/> 
-<%= turbo_frame_tag :postings do %>
-  <div class="feed_post_rows"> 
+<%= turbo_frame_tag "test", class: "feed_post_rows"  do %>
     <%= render @postings%>
-  </div>
-<%end%>                
+<%end%>   
 
 <%= turbo_frame_tag :pagination,
 loading: :lazy,
-src: postings_path(format: :turbo_stream)
-%>
+src: postings_path(format: :turbo_stream) , class: "feed_post_rows" %>
+
