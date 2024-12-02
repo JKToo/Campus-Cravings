@@ -1,0 +1,42 @@
+<p style="color: green"><%= notice %></p>
+
+
+<div class="profile_block">
+  <div class="grid-container">
+  <div class="item2">  
+    <div class="item2_text1"> 
+     @<%= Current.profile.tag%>
+    </div>  
+    <div class="item2_text2">
+      <%@schoolname = School.find_by(id: Current.profile.school_id)%>
+    <%= @schoolname.name %>
+    </div>
+
+  </div>  
+  <div class="item3">
+    <img class="item3_img" src="https://mrwallpaper.com/images/thumbnail/cool-smiley-profile-picture-6lqzc2aegkuxbini.jpg">
+  </div>  
+  <div class="item4"></div>
+  <div class="item5"> 
+
+    <p class="item5_text1"> <%=Current.profile.posting.count%>  Posts   </p>
+    <p class="item5_text2">  Customer   </p>
+    <%if Current.profile.status%>
+    <p class="item5_text3"> Distributor   </p>
+    <%end%>
+  </div>
+</div>
+  
+  <%= link_to "Edit profile", edit_profile_path(Current.profile), class: "profile_edit_button" %>
+  <%# <%= link_to "Back to profiles", profiles_path %> 
+
+
+</div>
+<%= turbo_frame_tag "about_turbo", class: "feed_post_rows"  do %>
+    <%= render @profile_postings%>
+<%end%>   
+
+<%= turbo_frame_tag :pagination,
+loading: :lazy,
+src: about_path(format: :turbo_stream) , class: "feed_post_rows" %>
+

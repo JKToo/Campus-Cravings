@@ -9,6 +9,7 @@
     display: flex;
     color: white;
     justify-content: center;
+    margin-bottom: 5%;
 }
 
 .grid-container {

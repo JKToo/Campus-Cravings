@@ -4,15 +4,29 @@ class PostingsController < ApplicationController
   before_action :set_current_user
 
   def index
-    @pagy, @postings = pagy_countless(Posting.where(school_id: Current.profile.school_id), limit: 3)
+    if session[:user_id]
+      @pagy, @postings = pagy_countless(Posting.where(school_id: Current.profile.school_id), limit: 3)
 
-    respond_to do |format|
-      format.html { render :index }
-      format.turbo_stream { render :index }
+
+      respond_to do |format|
+        format.html { render :index }
+        format.turbo_stream { render :index }
+      end
+
+    else
+        redirect_to sign_in_path
     end
   end
 
   def show
+  end
+
+  def about
+    @pagy, @profile_postings = pagy_countless(Posting.where(profile_id: Current.profile.id), limit: 3)
+    respond_to do |format|
+      format.html { render :about }
+      format.turbo_stream { render :about }
+    end
   end
 
   def school_postings

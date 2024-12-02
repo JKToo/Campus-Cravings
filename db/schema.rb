@@ -102,17 +102,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_19_184439) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "students", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "tag"
-    t.string "email"
-    t.string "school"
-    t.boolean "delivery"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"

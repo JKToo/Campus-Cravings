@@ -59,3 +59,14 @@
     gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(200px, auto));
 }
+
+.profile_edit_button{
+  background-color: #FF8911;
+  margin-top: 5%;
+  margin-right: 5%;
+  height: 10%;
+  width: 10%;
+  text-align: center;
+  color:white;
+  border-radius: 20px;
+}
