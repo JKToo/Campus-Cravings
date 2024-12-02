@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :profiles
-
+  resources :postings
   resources :postings do
     resources :comments, only: [ :create ]
   end

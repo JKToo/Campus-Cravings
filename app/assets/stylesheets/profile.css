@@ -100,3 +100,9 @@
     padding-left: 3%;
     padding-right: 3%;
 }
+
+.profile_card{
+    width: 14%;
+    margin-top: -10px;
+    text-align: end;
+}

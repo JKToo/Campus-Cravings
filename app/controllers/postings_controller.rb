@@ -5,6 +5,7 @@ class PostingsController < ApplicationController
 
   def index
     if session[:user_id]
+      @postings_main = Posting.all
       @pagy, @postings = pagy_countless(Posting.where(school_id: Current.profile.school_id), limit: 3)
 
 
@@ -18,7 +19,25 @@ class PostingsController < ApplicationController
     end
   end
 
+  def edit
+    @posting = Posting.find(params[:id])
+  end
+
   def show
+    @postings = Posting.find(params[:id])
+  end
+
+  def update
+    @posting = Posting.find(params[:id])
+
+      if @posting.update(posting_edit_params)
+        p "SUCCESS_________________"
+        redirect_to about_path
+      else
+        p "NOT_________________"
+
+        redirect_to sign_in_path
+      end
   end
 
   def about
@@ -60,7 +79,15 @@ class PostingsController < ApplicationController
 
 
   private
+  def set_posting
+    @posting = Posting.find(params[:id])
+  end
+
   def posting_params
     params.require(:posting).permit(:place, :description, :rating, :location, :school_id, :profile_id, images: [])
+  end
+
+  def posting_edit_params
+    params.require(:posting).permit(:place, :description, :rating, :location, :school_id, :profile_id)
   end
 end

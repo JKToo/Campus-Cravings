@@ -1,0 +1,33 @@
+<%= form_with model: @posting do |form| %>
+  <div>
+
+    <%= form.label :place, 'Place', style: "display: block" %>
+    <%= form.text_field :place %>
+  </div>
+
+  <div>
+    <%= form.label :description, 'Description', style: "display: block" %>
+    <%= form.text_area(:description, size: "50x10")%>
+  </div>
+
+  <div>
+    <%= form.label :rating, 'Rating', style: "display: block" %>
+    <%= form.text_field :rating %>
+  </div>
+
+  <div>
+    <%= form.label :location, 'Location', style: "display: block" %>
+
+     <%= form.text_field :location %>
+
+  </div>
+
+  <div>
+    <%= form.number_field :profile_id, value: Current.profile.id, type: :hidden %>
+    <%= form.number_field :school_id, value: Current.profile.school_id, type: :hidden %>
+  </div>
+  
+  <div>
+    <%= form.submit data:{turbo:false}%>
+  </div>
+<% end %>
