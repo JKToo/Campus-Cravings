@@ -1,13 +1,14 @@
 <%= form_with model: @posting do |form| %>
-  <div>
 
-    <%= form.label :place, 'Place', style: "display: block" %>
-    <%= form.text_field :place %>
+  <div class="form-floating ">
+    <%= form.text_field :place, class: "form-control", id:"floatingInput", autofocus: true, autocomplete: "place", placeholder: "Place"%>
+    <%= form.label :place, 'Place', for:"floatingInput", style: "display: block" %>
+
   </div>
 
-  <div>
-    <%= form.label :description, 'Description', style: "display: block" %>
-    <%= form.text_area(:description, size: "50x10")%>
+  <div class="form-floating ">
+    <%= form.text_area :description, size: "70x15", class: "form-control", id:"floatingInput",  placeholder: "Description"%>
+    <%= form.label :description, 'Description',  for:"floatingInput", style: "display: block" %>
   </div>
 
   <div>
@@ -28,6 +29,7 @@
   </div>
   
   <div>
-    <%= form.submit data:{turbo:false}%>
-  </div>
+    <%= form.submit "Update Post", data:{turbo:false}%>
+</div>
+
 <% end %>

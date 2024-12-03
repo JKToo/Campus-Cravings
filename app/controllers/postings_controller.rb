@@ -31,10 +31,8 @@ class PostingsController < ApplicationController
     @posting = Posting.find(params[:id])
 
       if @posting.update(posting_edit_params)
-        p "SUCCESS_________________"
         redirect_to about_path
       else
-        p "NOT_________________"
 
         redirect_to sign_in_path
       end

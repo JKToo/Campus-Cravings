@@ -12,7 +12,7 @@
                   <a class="nav-link" id="<%= "cbox#{posting.id}" %>-tab" data-bs-toggle="tab" href="#<%= "cbox#{posting.id}" %>" role="tab" aria-controls="<%= "cbox#{posting.id}" %>" aria-selected="false">Comments</a>
                </li>
                <%if posting.profile_id == Current.profile.id%>      
-                  <%= link_to "✏️", edit_posting_path(posting), class: "profile_card", data:{turbo:false}, locals: {p:posting} %>
+                  <%= link_to "✏️", edit_posting_path(posting), data:{turbo_frame: "modal"}, class: "profile_card",  locals: {p:posting} %>
                <%end%>
             </ul>
       </div>
