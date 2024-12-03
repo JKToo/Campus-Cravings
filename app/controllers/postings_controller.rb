@@ -1,14 +1,49 @@
 class PostingsController < ApplicationController
+  include Pagy::Backend
+  allow_browser versions: :modern
+  before_action :set_current_user
+
   def index
-    if params[:tag]
-      @postings = Posting.tagged_with(params[:tag])
+    if session[:user_id]
+      @postings_main = Posting.all
+      @pagy, @postings = pagy_countless(Posting.where(school_id: Current.profile.school_id), limit: 3)
+
+
+      respond_to do |format|
+        format.html { render :index }
+        format.turbo_stream { render :index }
+      end
+
     else
-      @postings = Posting.all
+        redirect_to sign_in_path
     end
-    @postings = @postings.page(params[:page])
+  end
+
+  def edit
+    @posting = Posting.find(params[:id])
   end
 
   def show
+    @postings = Posting.find(params[:id])
+  end
+
+  def update
+    @posting = Posting.find(params[:id])
+
+      if @posting.update(posting_edit_params)
+        redirect_to about_path
+      else
+
+        redirect_to sign_in_path
+      end
+  end
+
+  def about
+    @pagy, @profile_postings = pagy_countless(Posting.where(profile_id: Current.profile.id), limit: 3)
+    respond_to do |format|
+      format.html { render :about }
+      format.turbo_stream { render :about }
+    end
   end
 
   def school_postings
@@ -42,7 +77,15 @@ class PostingsController < ApplicationController
 
 
   private
+  def set_posting
+    @posting = Posting.find(params[:id])
+  end
+
   def posting_params
     params.require(:posting).permit(:place, :description, :rating, :location, :school_id, :profile_id, images: [])
+  end
+
+  def posting_edit_params
+    params.require(:posting).permit(:place, :description, :rating, :location, :school_id, :profile_id)
   end
 end

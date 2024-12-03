@@ -16,7 +16,7 @@
 .feed_post_rows{
   max-width: 80vw;
     font-family: Josefin;
-    margin: 0 auto;
+    margin-left: 7vw;
     display: grid;
     gap: 10rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, auto));

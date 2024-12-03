@@ -1,0 +1,11 @@
+<%= turbo_stream.append "about_turbo" do %>
+  <%= render @profile_postings %>
+<% end %>
+<%= turbo_stream.replace :pagination do %>
+  <% if @pagy.next.present? %>
+  
+    <%= turbo_frame_tag :pagination,
+                loading: :lazy,
+        src: about_path(format: :turbo_stream, page: @pagy.next)%>
+  <% end %>
+<% end %>

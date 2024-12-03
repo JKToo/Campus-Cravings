@@ -1,0 +1,13 @@
+<%= turbo_frame_tag :modal do%>
+<div class="modal">
+<div class="m-auto modal_card">
+<% content_for :title, "Editing posting" %>
+<h1>Editing Post
+
+</h1>
+<%= render "form", posting: @postings%>
+
+
+</div>
+</div>
+<%end%>

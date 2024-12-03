@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   resources :profiles
-  
+  resources :postings
   resources :postings do
-    resources :comments, only: [:create]
+    resources :comments, only: [ :create ]
   end
+  root "postings#index"
   get "sign_up", to: "register#new"
   post "sign_up", to: "register#create"
   delete "logout", to: "sessions#destroy"
@@ -18,12 +19,11 @@ Rails.application.routes.draw do
   get "request", to: "orders#renderReq"
   patch "request", to: "orders#update"
   post "add_comment", to: "comments#create"
-  get "home/about"
+  get "about", to: "postings#about"
   get "home/popular"
   get "home/order"
   # get "home/signin"
   get "home/abouter"
-  root "home#index"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check

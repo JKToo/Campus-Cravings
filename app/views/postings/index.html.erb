@@ -1,0 +1,20 @@
+<% if notice %>
+        <p class="notice1"><%= notice %></p> 
+<% end %>
+
+<% if alert %>
+    <p class="alert2 alert-warning "><%= alert %></p>
+<%end%>
+<div class="home_text_card">
+    <p class="home_text"> Hey ! Tell other users about your experience and recommendations. Friends or not, every opinion matters. Help other cravers decide what they want to eat or should try! </p>
+    <%= link_to "Post", add_post_path, class: "home_post_button"%>       
+</div>  
+<br/> 
+<%= turbo_frame_tag "test", class: "feed_post_rows"  do %>
+    <%= render @postings%>
+<%end%>   
+
+<%= turbo_frame_tag :pagination,
+loading: :lazy,
+src: postings_path(format: :turbo_stream) , class: "feed_post_rows" %>
+

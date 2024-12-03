@@ -1,0 +1,51 @@
+<div  id="<%=dom_id posting%>">
+<div class="card " style="width: 25rem;">
+      <div class="card-header">
+         <ul class="nav nav-tabs" id="myTab" role="tablist">
+               <li class="nav-item">
+                  <a class="nav-link active" id="<%= "abox#{posting.id}" %>-tab" data-bs-toggle="tab" href="#<%= "abox#{posting.id}" %>" role="tab" aria-controls="<%= "abox#{posting.id}" %>" aria-selected="true">Post</a>
+               </li>
+               <li class="nav-item"> 
+                  <a class="nav-link" id="<%= "bbox#{posting.id}" %>-tab" data-bs-toggle="tab" href="#<%= "bbox#{posting.id}" %>" role="tab" aria-controls="<%= "bbox#{posting.id}" %>" aria-selected="false">Images</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link" id="<%= "cbox#{posting.id}" %>-tab" data-bs-toggle="tab" href="#<%= "cbox#{posting.id}" %>" role="tab" aria-controls="<%= "cbox#{posting.id}" %>" aria-selected="false">Comments</a>
+               </li>
+               <%if posting.profile_id == Current.profile.id%>      
+                  <%= link_to "✏️", edit_posting_path(posting), data:{turbo_frame: "modal"}, class: "profile_card",  locals: {p:posting} %>
+               <%end%>
+            </ul>
+      </div>
+
+      <div class="card-body card-body-height" >       
+            <div class="tab-pane fade show active" id=<%= "abox#{posting.id}" %> role="tabpanel" aria-labelledby="<%= "abox#{posting.id}" %>-tab">
+               <%if posting.img.present?%>
+                     <%= image_tag(posting.img, class: "card-img-top", :alt => "API Img")%>
+                     <%else%>
+                     <%= image_tag("", class: "card-img-top", :alt => "")%>
+               <%end%>
+               <h5 class="card-title">@<%= posting.profile.tag %></h5>
+               <h5 class="card-title"><%= posting.place %></h5>
+               <h6 class="card-subtitle mb-2 text-muted">Experience: <%= posting.rating %></h6>
+               <h6 class="card-subtitle mb-2 text-muted"> <%= posting.location %></h6>
+               <p class="card-text">    <%= posting.description %></p>            
+            </div>
+
+            <div class="tab-pane fade  " id=<%= "bbox#{posting.id}" %> role="tabpanel" aria-labelledby="<%= "bbox#{posting.id}" %>-tab">
+                  <%= render partial: "postings/school_postings_images", locals: {posting_id:  posting.id}%>             
+            </div>
+
+            <div class="tab-pane fade  " id=<%= "cbox#{posting.id}" %> role="tabpanel" aria-labelledby="<%= "cbox#{posting.id}" %>-tab">
+                  <p class="card-subtitle"> <%=render posting.comment%></p>
+               <div  class="card-comment">
+               <%= render partial: 'comments/form', locals: {posting_id: posting.id, profile_id: Current.profile.id}%>
+               </div>
+            </div>
+      </div>  
+         <%= render partial: 'home/time_posted', locals: {p:posting}%>
+</div>    
+</div>    
+
+
+
+

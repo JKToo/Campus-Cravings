@@ -9,16 +9,19 @@
     <div class="comments-posted-text">
     <div class="card card-content">        
         <div class="row">
-        <p><%=comment.profile.fname%>     -  
-            <%if @minutes < 59%>
-                 <%=@minutes %> minutes ago
+        <div style="display:flex">
+          <%=comment.profile.fname%>  
+            <div style="font-size: 12px; margin-left: 15px; margin-top: 3px">
+          <%if @minutes < 59%>
+                 <%=@minutes%> minutes ago
             <%elsif @hours < 24%>
                  <%=@hours %> hours ago
             <% else %>
                  <%=@day %> days ago
             <%end%>
-        </p>
+        </div></div>
          <p><%=comment.content%></p>
+
     </div>
 
     </div>

@@ -1,0 +1,32 @@
+<%= form_with model: @posting do |form| %>
+
+  <div class="form-floating ">
+    <%= form.text_field :place, class: "form-control", id:"floatingInput", autofocus: true, autocomplete: "place", placeholder: "Place"%>
+    <%= form.label :place, 'Place', for:"floatingInput", style: "display: block" %>
+
+  </div>
+
+  <div class="form-floating ">
+    <%= form.text_area(:description, class: "modal-control form-control ", id:"floatingInput",  placeholder: "Description")%>
+    <%= form.label :description, 'Description',  for:"floatingInput", style: "display: block" %>
+  </div>
+
+    <div class="form-floating ">
+    <%= form.text_field :rating, class: "form-control", id:"floatingInput", placeholder: "Rating"%>
+    <%= form.label :rating, 'Rating', style: "display: block" %>
+  </div>
+
+  <div  class="form-floating ">
+     <%= form.text_field :location, class: "form-control", id:"floatingInput", placeholder: "Rating"%>
+    <%= form.label :location, 'Location', style: "display: block" %>
+  </div>
+
+  <div>
+    <%= form.number_field :profile_id, value: Current.profile.id, type: :hidden %>
+    <%= form.number_field :school_id, value: Current.profile.school_id, type: :hidden %>
+  </div>
+    <%= form.submit "Cancel", data:{turbo:false}, class:" input-group-submit-invert"%>
+  
+    <%= form.submit "Update Post", data:{turbo:false}, class:" input-group-submit"%>
+
+<% end %>
