@@ -7,29 +7,26 @@
   </div>
 
   <div class="form-floating ">
-    <%= form.text_area :description, size: "70x15", class: "form-control", id:"floatingInput",  placeholder: "Description"%>
+    <%= form.text_area(:description, class: "modal-control form-control ", id:"floatingInput",  placeholder: "Description")%>
     <%= form.label :description, 'Description',  for:"floatingInput", style: "display: block" %>
   </div>
 
-  <div>
+    <div class="form-floating ">
+    <%= form.text_field :rating, class: "form-control", id:"floatingInput", placeholder: "Rating"%>
     <%= form.label :rating, 'Rating', style: "display: block" %>
-    <%= form.text_field :rating %>
   </div>
 
-  <div>
+  <div  class="form-floating ">
+     <%= form.text_field :location, class: "form-control", id:"floatingInput", placeholder: "Rating"%>
     <%= form.label :location, 'Location', style: "display: block" %>
-
-     <%= form.text_field :location %>
-
   </div>
 
   <div>
     <%= form.number_field :profile_id, value: Current.profile.id, type: :hidden %>
     <%= form.number_field :school_id, value: Current.profile.school_id, type: :hidden %>
   </div>
+    <%= form.submit "Cancel", data:{turbo:false}, class:" input-group-submit-invert"%>
   
-  <div>
-    <%= form.submit "Update Post", data:{turbo:false}%>
-</div>
+    <%= form.submit "Update Post", data:{turbo:false}, class:" input-group-submit"%>
 
 <% end %>
