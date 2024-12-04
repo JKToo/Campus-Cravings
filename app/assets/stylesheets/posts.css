@@ -87,7 +87,8 @@
 
 
 .card-image-section{
-  text-align: center;
+  justify-items: center;
+  
 }
 
 .comments-field{
