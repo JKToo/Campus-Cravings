@@ -37,3 +37,5 @@
 
 GemFile.lock
 Gemfile
+/app/assets/builds/*
+!/app/assets/builds/.keep
