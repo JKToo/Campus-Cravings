@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update destroy ]
+  include Pagy::Backend
 
   # GET /profiles or /profiles.json
   def index
@@ -8,6 +9,13 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1 or /profiles/1.json
   def show
+    @poster_id = Profile.find(params[:id])
+    @pagys,  @poster = pagy_countless(Posting.where(profile_id: @poster_id), limit: 3)
+
+    respond_to do |format|
+      format.html { render :show }
+      format.turbo_stream { render :show }
+    end
   end
 
   # GET /profiles/new

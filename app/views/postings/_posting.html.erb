@@ -23,9 +23,16 @@
                <%if posting.img.present?%>
                      <%= image_tag(posting.img, class: "card-img-top", :alt => "API Img")%>
                      <%else%>
-                     <%= image_tag("", class: "card-img-top", :alt => "")%>
+                     <%= image_tag("", class: "card-img-top", :alt => "")%>                     
                <%end%>
+               <div style="display:inline-block">
+               <div class="card-avatar">
+                   <%= link_to image_tag(posting.profile.avatar, class: "comment-avatar circle card-avatar"), profile_path(posting.profile.id), data:{turbo:false}%> 
+               </div>
                <h5 class="card-title">@<%= posting.profile.tag %></h5>
+               <h6 class="card-subtitle"><%= School.find_by(id: posting.profile.school_id).name %></h6>
+               </div>
+
                <h5 class="card-title"><%= posting.place %></h5>
                <h6 class="card-subtitle mb-2 text-muted">Experience: <%= posting.rating %></h6>
                <h6 class="card-subtitle mb-2 text-muted"> <%= posting.location %></h6>
