@@ -1,5 +1,7 @@
+<%@ordered = @postings.sort_by(&:place)%>
+
 <%= turbo_stream.append "feed" do %>
-  <%= render @postings %>
+  <%= render @ordered %>
 <% end %>
 <%= turbo_stream.replace :pagination do %>
       <% if @pagy.next.present? %>

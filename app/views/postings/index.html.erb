@@ -10,9 +10,9 @@
     <%= link_to "Post", add_post_path, class: "home_post_button"%>       
 </div>  
 <br/> 
-
+<%@ordered = @postings.sort_by(&:place)%>
 <%= turbo_frame_tag "feed", class: "feed_post_rows"  do %>
- <%= render @postings%>
+ <%= render @ordered%>
 <%end%>   
 
 <%= turbo_frame_tag :pagination,
