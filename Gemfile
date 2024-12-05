@@ -63,6 +63,6 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "mini_magick", "~> 4.9.3"
+gem "mini_magick", "~> 4.13.2"
 
 gem "tailwindcss-rails", "~> 3.0"
