@@ -5,4 +5,5 @@ class Profile < ApplicationRecord
   has_many :comment
   has_many :order
   accepts_nested_attributes_for :school
+  accepts_nested_attributes_for :posting
 end

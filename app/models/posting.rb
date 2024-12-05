@@ -7,7 +7,7 @@ class Posting < ApplicationRecord
   accepts_nested_attributes_for :profile
   def images_thumbnail
     images.map do |image|
-      image.variant(resize_to_limit: [ 300, 300 ]).processed
+      image.variant(resize_to_limit: [ 400, 400 ]).processed
     end
   end
 end

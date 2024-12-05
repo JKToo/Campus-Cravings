@@ -1,21 +1,8 @@
-<%# 
-<form action="<%= posting_comments_path(postings)">
-
-    <div class="input-group-append ">
-        <input class="input-group-text input-group-submit" type="submit" value="Submit" id="basic-addon2">
-    </div>
-
-    <div class="input-group ">
-    <textarea name="comment[content]" type="text" class="form-control" placeholder="Add a comment..." 
-    aria-label="Recipient's username" aria-describedby="basic-addon2" id=<%:content</textarea>
-    
-    </div>
-</form>  %>
 
 <%= form_with model: @comments, url: add_comment_path do |form|%>
 
     <div>
-        <%=form.submit "Post", class:"input-group-text input-group-submit"%>
+        <%=form.submit "Post", class:"input-group-text input-group-submit", data:{turbo:false}%>
     </div>
     <div>
         <%= form.text_field :content, class: "form-control", placeholder: "Add a comment..." %>

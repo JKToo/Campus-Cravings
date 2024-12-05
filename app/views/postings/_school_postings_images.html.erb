@@ -4,7 +4,12 @@
   <h6 class="card-image-section mb-2 text-muted">
                 
   <%@imageHolder.images_thumbnail.each do |i|%>
-  <hr/>
+  <div style="margin-bottom: 5%">
+
+  </div>
+  <div style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
   <%= link_to image_tag(i), i%>
+  </div>
+  
   <%end%>
 </h6>

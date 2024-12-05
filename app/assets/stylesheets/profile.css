@@ -3,7 +3,10 @@
     width:70%;
     height: 30vh;
     font-family: Josefin Thin;
-    background-color: #892be2af;
+    /* background-color: #892be2af; */
+    background-image: url("bg-tester.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 20px;
     margin-left: 15%;
     display: flex;
@@ -46,21 +49,17 @@
 .item3 {
     margin-top: 5%;
     margin-left: 15%;
-    text-align: center;
-    border-radius: 50%;
-    width: 230px;
-    height: 220px;
-    background-color: rgb(255, 255, 255);
     grid-area: avatar; 
-}
-
-.item3_img{
+    background-color: #000000;
+    border: 5px solid #ffffff;
     max-width: 20vw;
     max-height: 20vh;
     width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  overflow: hidden;
+    height: 200px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    overflow: hidden;
 }
 
 .item4 {
@@ -74,13 +73,18 @@
     display: flex;
 }
 
+
+.status{
+    background-color: rgb(32, 168, 231);
+    padding: 5px;
+    border-radius: 20px;
+
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
 .item5_text1{
     border-radius: 20px;
     background-color: #2E2532;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    padding-left: 3%;
-    padding-right: 3%;
 }
 .item5_text2{
     padding-top: 1%;

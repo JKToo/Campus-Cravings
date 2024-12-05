@@ -64,3 +64,5 @@ group :test do
 end
 
 gem "mini_magick", "~> 4.9.3"
+
+gem "tailwindcss-rails", "~> 3.0"

@@ -14,6 +14,8 @@
     <div class="form-floating ">
     <%= form.text_field :rating, class: "form-control", id:"floatingInput", placeholder: "Rating"%>
     <%= form.label :rating, 'Rating', style: "display: block" %>
+  
+
   </div>
 
   <div  class="form-floating ">
@@ -25,8 +27,7 @@
     <%= form.number_field :profile_id, value: Current.profile.id, type: :hidden %>
     <%= form.number_field :school_id, value: Current.profile.school_id, type: :hidden %>
   </div>
-    <%= form.submit "Cancel", data:{turbo:false}, class:" input-group-submit-invert"%>
-  
+    <%= link_to 'Cancel',  :back, data:{turbo:false}, class:" input-group-submit-invert" %>
     <%= form.submit "Update Post", data:{turbo:false}, class:" input-group-submit"%>
 
 <% end %>
