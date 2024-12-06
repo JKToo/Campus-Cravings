@@ -20,7 +20,8 @@ class PostingsController < ApplicationController
   end
 
   def explore
-      @pagyExplore, @allPostings = pagy_countless(Posting.all, limit: 3)
+    @temp = Posting.order("RANDOM()").limit(Posting.count)
+      @pagy, @allPostings = pagy_countless(@temp, limit: 5)
 
 
       respond_to do |format|

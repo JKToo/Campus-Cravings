@@ -4,7 +4,7 @@
     <%= link_to "Post", add_post_path, class: "home_post_button"%>       
 </div>  
 <br/> 
-<%@ordered = @allPostings.sort_by(&:place)%>
+<%@ordered = @allPostings.shuffle%>
 <%= turbo_frame_tag "explore_turbo", class: "feed_post_rows"  do %>
  <%= render @ordered%>
 <%end%>   
