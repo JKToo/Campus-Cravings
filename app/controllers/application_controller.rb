@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
       Current.profile = Profile.find_by(user_id: session[:user_id])
       # Current.school = School.find_by(id: Current.profile.school_id)
 
+    else
+      redirect_to sign_in_path
     end
   end
 end
