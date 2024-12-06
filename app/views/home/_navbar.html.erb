@@ -4,12 +4,12 @@
     <div class="nav">
         <ul class = "nav-items" >
             <strong>            
-                <% if Current.user %>
+                <% if Current.profile %>
                      <li> 
                     <%= link_to_active_class('Feed', 'active', root_path, class:'') %>
                     </li>
                     <li> 
-                        <%= link_to_active_class('Popular', 'active', home_popular_path, class:'') %>
+                        <%= link_to_active_class('Explore', 'active', explore_path, class:'') %>
                     </li>
                     <li> 
                         <%= link_to_active_class('Order', 'active', home_order_path, class:'') %>

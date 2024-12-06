@@ -22,11 +22,11 @@
                 <div class="card-body card-body-requests">
                     <h5 class="card-title-order"><%= o.restaurant %></h5>  
                     <h6 class="card-subtitle mb-2 text-muted card-title" style="text-align:center"><%= o.address%></h6>    
-                    <hr/>
+                    <hr class="horizontal-line"/>
                     <h6 class="card-subtitle mb-2 text-muted">Placed by: <%= p.fname+" "+p.lname %></h6>
                     <h6 class="card-subtitle mb-2 text-muted">@<%= p.tag %></h6>
                     <h6 class="card-subtitle mb-2 text-muted">Tip: $<%=o.tip.round(2)%></h6>
-                    <hr/>
+                    <hr class="horizontal-line"/>
                     <p class="card-text">    <%=  o.order%></p>
                     <div>
                     <%= f.number_field :delivery_status, value: 2, type: :hidden %>
@@ -61,11 +61,11 @@
                 <div class="card-body">
                     <h5 class="card-title-order"><%= o.restaurant %></h5>  
                     <h6 class="card-subtitle mb-2 text-muted card-title" style="text-align:center"><%= o.address%></h6>    
-                    <hr/>
+                    <hr class="horizontal-line"/>
                     <h6 class="card-subtitle mb-2 text-muted">Placed by: <%= p.fname+" "+p.lname %></h6>
                     <h6 class="card-subtitle mb-2 text-muted">@<%= p.tag %></h6>
                     <h6 class="card-subtitle mb-2 text-muted">Tip: $<%=o.tip.round(2)%></h6>
-                    <hr/>
+                    <hr class="horizontal-line"/>
                     <p class="card-text">    <%=  o.order%></p>
                 </div>
             </div>

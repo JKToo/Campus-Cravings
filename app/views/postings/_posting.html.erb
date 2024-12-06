@@ -27,8 +27,12 @@
                <%end%>
                <div style="display:inline-block">
                <div class="card-avatar">
-                   <%= link_to image_tag(posting.profile.avatar, class: "comment-avatar circle card-avatar"), profile_path(posting.profile.id), data:{turbo:false}%> 
-               </div>
+                  <%if posting.profile.avatar?%>
+                     <%= link_to image_tag(posting.profile.avatar, class: "comment-avatar circle card-avatar"), profile_path(posting.profile.id), data:{turbo:false}%> 
+                  <%else%>
+                      <%= link_to image_tag("https://static.vecteezy.com/system/resources/previews/020/911/747/non_2x/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png", class: "comment-avatar circle card-avatar"), profile_path(posting.profile.id), data:{turbo:false}%> 
+                  <%end%>
+                    </div>
                <h5 class="card-title">@<%= posting.profile.tag %></h5>
                <h6 class="card-subtitle"><%= School.find_by(id: posting.profile.school_id).name %></h6>
                </div>

@@ -1,23 +1,17 @@
-<% if notice %>
-        <p class="notice1"><%= notice %></p> 
-<% end %>
 
-<% if alert %>
-    <p class="alert2 alert-warning "><%= alert %></p>
-<%end%>
 <div class="home_text_card">
     <p class="home_text"> Hey ! Tell other users about your experience and recommendations. Friends or not, every opinion matters. Help other cravers decide what they want to eat or should try! </p>
     <%= link_to "Post", add_post_path, class: "home_post_button"%>       
 </div>  
 <br/> 
-<%@ordered = @postings.sort_by(&:place)%>
-<%= turbo_frame_tag "feed", class: "feed_post_rows"  do %>
+<%@ordered = @allPostings.shuffle%>
+<%= turbo_frame_tag "explore_turbo", class: "feed_post_rows"  do %>
  <%= render @ordered%>
 <%end%>   
 
 <%= turbo_frame_tag :pagination,
 loading: :lazy,
-src: postings_path(format: :turbo_stream) , class: "feed_post_rows" do %>
+src: explore_path(format: :turbo_stream) , class: "feed_post_rows" do %>
 <div class="relative flex justify-center items-center">
     <div class="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-purple-500"></div>
     <%=image_tag ("CC2.png"),  class:"rounded-full h-28 w-28"%>

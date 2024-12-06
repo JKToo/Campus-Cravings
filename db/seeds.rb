@@ -49,7 +49,7 @@ ActiveRecord::Base.connection.reset_pk_sequence!('active_storage_variant_records
 
 userArr = {}
 
-(1..6).each do |i|
+(1...30).each do |i|
 userArr[i] = User.create(email: "email#{i}@gmail.com", password_digest: BCrypt::Password.create('123'))
   # userArr[1] = User.create(email: "email1@gmail.com", password_digest: BCrypt::Password.create('123'))
 end
@@ -115,33 +115,33 @@ School.create([
 p "Created #{School.count} college entries."
 
 profileArr={}
-(1..6).each do |i|
+j = 11
+k = 31
+(1...10).each do |i|
   profileArr[i] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: i, school_id: 37, avatar: Faker::Avatar.image)
 end
+
+(11...20).each do |j|
+  profileArr[j] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: j, school_id: 3, avatar: Faker::Avatar.image)
+end
+
+(21...30).each do |k|
+profileArr[k] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: k, school_id: 2, avatar: Faker::Avatar.image)
+end
+
+
 p "Created #{Profile.count} Profile "
 
 
-5.times do |i|
+(1...10).each do |i|
   random = 'food'+rand(1...10).to_s+'.png'
   random2 = 'food'+rand(1...10).to_s+'.png'
   random3 = 'food'+rand(1...10).to_s+'.png'
-  p1= Posting.create(
-  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
-
-  p2 = Posting.create(
-  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
-
-
-  p3 = Posting.create(
-  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
-
-
-  p4 = Posting.create(
-  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
-
-
-  p5 = Posting.create(
-  place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  p1 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  p2 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  p3 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  p4 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  p5 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
 
 
   p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
@@ -173,7 +173,94 @@ p "Created #{Profile.count} Profile "
   p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
 end
 
+
+
+(11...20).each do |i|
+  random = 'food'+rand(1...10).to_s+'.png'
+  random2 = 'food'+rand(1...10).to_s+'.png'
+  random3 = 'food'+rand(1...10).to_s+'.png'
+  p1 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper)
+  p2 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper)
+  p3 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper)
+  p4 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper)
+  p5 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper)
+
+
+  p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(1...10).to_s+'.png'
+  random2 = 'food'+rand(1...10).to_s+'.png'
+  random3 = 'food'+rand(1...10).to_s+'.png'
+  p2.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p2.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p2.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(1...10).to_s+'.png'
+  random2 = 'food'+rand(1...10).to_s+'.png'
+  random3 = 'food'+rand(1...10).to_s+'.png'
+  p3.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p3.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p3.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(1...10).to_s+'.png'
+  random2 = 'food'+rand(1...10).to_s+'.png'
+  random3 = 'food'+rand(1...10).to_s+'.png'
+  p4.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p4.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p4.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(1...10).to_s+'.png'
+  random2 = 'food'+rand(1...10).to_s+'.png'
+  random3 = 'food'+rand(1...10).to_s+'.png'
+  p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+end
+
+
+
+(21...30).each do |i|
+  random = 'food'+rand(1...10).to_s+'.png'
+  random2 = 'food'+rand(1...10).to_s+'.png'
+  random3 = 'food'+rand(1...10).to_s+'.png'
+  p1 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper)
+  p2 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper)
+  p3 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper)
+  p4 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper)
+  p5 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper)
+
+
+  p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(1...10).to_s+'.png'
+  random2 = 'food'+rand(1...10).to_s+'.png'
+  random3 = 'food'+rand(1...10).to_s+'.png'
+  p2.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p2.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p2.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(1...10).to_s+'.png'
+  random2 = 'food'+rand(1...10).to_s+'.png'
+  random3 = 'food'+rand(1...10).to_s+'.png'
+  p3.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p3.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p3.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(1...10).to_s+'.png'
+  random2 = 'food'+rand(1...10).to_s+'.png'
+  random3 = 'food'+rand(1...10).to_s+'.png'
+  p4.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p4.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p4.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+  random = 'food'+rand(1...10).to_s+'.png'
+  random2 = 'food'+rand(1...10).to_s+'.png'
+  random3 = 'food'+rand(1...10).to_s+'.png'
+  p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
+  p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random2)), filename: random)
+  p5.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random3)), filename: random)
+end
+
+
 p "Created #{Posting.count} posts"
+
+
 
 
 
@@ -189,10 +276,22 @@ p "Created #{Order.count} orders"
 
 
 
-5.times do |i|
+(1...10).each do |i|
   Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
   Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
   Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
 end
 
+
+(11...20).each do |i|
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
+end
+
+(21...30).each do |i|
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
+end
 p "Created #{Comment.count} comments"
