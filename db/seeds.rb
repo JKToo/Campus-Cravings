@@ -278,20 +278,20 @@ p "Created #{Order.count} orders"
 
 (1...10).each do |i|
   Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i+1)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i+2)
 end
 
 
 (11...20).each do |i|
   Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i+1)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i+2)
 end
 
 (21...30).each do |i|
   Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i-1)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i-2)
 end
 p "Created #{Comment.count} comments"

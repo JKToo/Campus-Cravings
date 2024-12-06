@@ -2,8 +2,9 @@
    <%@day = ((DateTime.now - comment.profile.created_at.to_datetime)).to_i%>
           <%@hours = ((DateTime.now - comment.profile.created_at.to_datetime) * 24 ).to_i%>
           <%@minutes = ((DateTime.now - comment.profile.created_at.to_datetime) * 24 * 60).to_i%>
-          
-    <div class="comments-posted-avatar">
+    <div style="margin-top:2%">
+          </div>
+    <div class="comments-posted-avatar" style="margin-top:1%">
         <%= image_tag(comment.profile.avatar, class: "comment-avatar circle")%>
     </div>
     <div class="comments-posted-text">
