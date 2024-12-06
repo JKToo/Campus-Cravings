@@ -19,6 +19,16 @@ class PostingsController < ApplicationController
     end
   end
 
+  def explore
+      @pagyExplore, @allPostings = pagy_countless(Posting.all, limit: 3)
+
+
+      respond_to do |format|
+        format.html { render :explore }
+        format.turbo_stream { render :explore }
+      end
+  end
+
   def edit
     @posting = Posting.find(params[:id])
   end
@@ -66,7 +76,7 @@ class PostingsController < ApplicationController
     respond_to do |format|
       if @postings.save
         # redirect_to home_about_path, notice: "Post Successfully created"
-        format.html { redirect_to home_about_path, notice: "Post was successfully created." }
+        format.html { redirect_to profile_path, notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @postings }
       else
         format.html { render :new, notice: "Error" }

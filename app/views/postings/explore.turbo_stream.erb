@@ -1,0 +1,23 @@
+<%= turbo_stream.append "explore_turbo" do %>
+  <%= render @allPostings %>
+<% end %>
+<%= turbo_stream.replace :pagination do %>
+      <% if @pagyExplore.next.present? %>
+      
+        <%= turbo_frame_tag :pagination,
+                    loading: :lazy,
+            src: explore_path(format: :turbo_stream, page: @pagyExplore.next), class: "feed_post_rows", style:"margin-top: 3%" do%>
+            
+          <div class="relative flex justify-center items-center">
+        <div class="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-purple-500"></div>
+          <%=image_tag("CC2.png", class:"rounded-full h-28 w-28")%>
+        </div>
+      <%end%>
+
+        <%else%>
+        <div style="width: 80vw ;max-width:100%; text-align:center; font-family: Josefin;  margin-left: 10vw; padding: 40px 0px 40px 0px">
+    You've reached the end of your explorer's feed! 
+</div>
+  <% end %>
+<% end %>
+

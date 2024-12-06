@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   patch "request", to: "orders#update"
   post "add_comment", to: "comments#create"
   get "about", to: "postings#about"
-  get "home/popular"
+  get "explore", to: "postings#explore"
   get "home/order"
   # get "home/signin"
   get "home/abouter"
