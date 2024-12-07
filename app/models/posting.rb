@@ -10,4 +10,12 @@ class Posting < ApplicationRecord
       image.variant(resize_to_limit: [ 400, 400 ]).processed
     end
   end
+
+
+  def self.ransackable_attributes(auth_object = nil)
+    [ "description", "location", "place", "school_id", "place" ]
+  end
+  def self.ransackable_associations(auth_object = nil)
+    [ "school" ]
+  end
 end
