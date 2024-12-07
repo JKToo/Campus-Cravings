@@ -10,7 +10,7 @@
             <strong>            
                 <% if Current.profile %>
                      <li> 
-                    <%= link_to_active_class('Feed', 'active', root_path, class:'') %>
+                    <%= link_to_active_class('Feed', 'active', root_path, class:'', style: 'margin-left: 15px') %>
                     </li>
                     <li> 
                         <%= link_to_active_class('Explore', 'active', explore_path, class:'') %>
@@ -30,7 +30,7 @@
                         <%end%>
                         
                     <li>
-                        <%= link_to "Sign Out", logout_path, data: { "turbo-method": :delete }%>                    
+                        <%= link_to image_tag("signout.png", size: 20), logout_path, data: { "turbo-method": :delete }%>                    
                     </li>
 
                    
