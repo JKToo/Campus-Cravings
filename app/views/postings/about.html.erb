@@ -9,14 +9,14 @@
     </div>  
     
 <div class="item2_text2">
-      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+    <%=Current.profile.bio%>
     </div>
   </div>  
   <div class="name" >
       
     <%= Current.profile.fname %> 
     <%= Current.profile.lname %> 
-    <div style="font-family: Josefin Italic">
+    <div style="font-family: Josefin Italic; font-size: 22px">
        <%@schoolname = School.find_by(id: Current.profile.school_id)%>
     <%= @schoolname.name %>
     </div>

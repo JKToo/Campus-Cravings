@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_07_155310) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_07_174716) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,6 +92,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_07_155310) do
     t.bigint "user_id"
     t.bigint "school_id"
     t.string "avatar"
+    t.text "bio"
     t.index ["school_id"], name: "index_profiles_on_school_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end

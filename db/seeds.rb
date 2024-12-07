@@ -118,30 +118,33 @@ profileArr={}
 j = 11
 k = 31
 (1...10).each do |i|
-  profileArr[i] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: i, school_id: 37, avatar: Faker::Avatar.image)
+  profileArr[i] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: i, school_id: 37, avatar: Faker::Avatar.image, bio: Faker::Lorem.paragraph(sentence_count: 13))
 end
 
 (11...20).each do |j|
-  profileArr[j] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: j, school_id: 3, avatar: Faker::Avatar.image)
+  profileArr[j] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: j, school_id: 3, avatar: Faker::Avatar.image, bio: Faker::Lorem.paragraph(sentence_count: 13))
 end
 
 (21...30).each do |k|
-profileArr[k] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: k, school_id: 2, avatar: Faker::Avatar.image)
+profileArr[k] = Profile.create!(fname: "#{Faker::Name.first_name}", lname: "#{Faker::Name.last_name}", tag: "#{Faker::Superhero.name}",  status: true, user_id: k, school_id: 2, avatar: Faker::Avatar.image, bio: Faker::Lorem.paragraph(sentence_count: 13))
 end
 
 
-p "Created #{Profile.count} Profile "
+
+
+
+
 
 
 (1...10).each do |i|
   random = 'food'+rand(1...10).to_s+'.png'
   random2 = 'food'+rand(1...10).to_s+'.png'
   random3 = 'food'+rand(1...10).to_s+'.png'
-  p1 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
-  p2 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
-  p3 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
-  p4 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
-  p5 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper)
+  p1 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  p2 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  p3 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  p4 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  p5 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 37, profile_id: i, img: apiImgHelper, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
 
 
   p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
@@ -179,11 +182,13 @@ end
   random = 'food'+rand(1...10).to_s+'.png'
   random2 = 'food'+rand(1...10).to_s+'.png'
   random3 = 'food'+rand(1...10).to_s+'.png'
-  p1 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper)
-  p2 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper)
-  p3 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper)
-  p4 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper)
-  p5 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper)
+  curr = DateTime.now
+  time = Faker::Time.between(from: DateTime.now - 5, to: curr-3)
+  p1 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper, created_at: time, updated_at: time)
+  p2 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper, created_at: time, updated_at: time)
+  p3 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper, created_at: time, updated_at: time)
+  p4 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper, created_at: time, updated_at: time)
+  p5 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 3, profile_id: i, img: apiImgHelper, created_at: time, updated_at: time)
 
 
   p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
@@ -221,11 +226,11 @@ end
   random = 'food'+rand(1...10).to_s+'.png'
   random2 = 'food'+rand(1...10).to_s+'.png'
   random3 = 'food'+rand(1...10).to_s+'.png'
-  p1 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper)
-  p2 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper)
-  p3 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper)
-  p4 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper)
-  p5 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper)
+  p1 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  p2 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  p3 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  p4 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  p5 = Posting.create(place: Faker::Restaurant.name, description: Faker::Restaurant.review, rating: rand(0...5), location: Faker::Address.full_address, school_id: 2, profile_id: i, img: apiImgHelper, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
 
 
   p1.images.attach(io:  File.open(Rails.root.join('app/assets/images/'+random)), filename: random)
@@ -277,21 +282,21 @@ p "Created #{Order.count} orders"
 
 
 (1...10).each do |i|
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i+1)
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i+2)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id: i, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id: i+1, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id: i+2, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
 end
 
 
 (11...20).each do |i|
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i+1)
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i+2)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id: i, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id: i+1, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id: i+2, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
 end
 
 (21...30).each do |i|
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i)
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i-1)
-  Comment.create(content: Faker::Food.description, posting_id: i, profile_id:i-2)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id: i)
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id: i-1, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
+  Comment.create(content: Faker::Food.description, posting_id: i, profile_id: i-2, created_at: Faker::Time.between_dates(from: Date.today - 3, to: Date.today, period: :all))
 end
 p "Created #{Comment.count} comments"

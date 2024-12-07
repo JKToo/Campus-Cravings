@@ -1,7 +1,7 @@
 <%@ordered = @allPostings.shuffle%>
 
 <%= turbo_stream.append "explore_turbo" do %>
-  <%= render @ordered %>
+  <%= render @allPostings %>
 <% end %>
 <%= turbo_stream.replace :pagination do %>
       <% if @pagy.next.present? %>
