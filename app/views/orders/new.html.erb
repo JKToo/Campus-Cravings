@@ -1,31 +1,36 @@
-<h2>Tell us about your experience</h2>
+<h2>Place your lunch order</h2>
 <%= form_with model: @orders, url: order_path do |f| %>
   <div class="field">
     <%= f.label :restaurant %><br />
     <%= f.text_field :restaurant, autofocus: true%>
   </div>
-
+<div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_field :address%>
+  </div>
  <div class="field">
     <%= f.label :order %><br />
-    <%= f.text_field :order, autofocus: true%>
+    <%= f.text_field :order%>
   </div>
   <div class="field">
     <%= f.label :total %><br />
-    <%= f.number_field :total, autofocus: true%>
+    <%= f.number_field :total%>
   </div>
   <div class="field">
     <%= f.label :tip %><br />
-    <%= f.text_field :tip, autofocus: true%>
+    <%= f.text_field :tip%>
   </div>
 
-<div>
-    <%= f.number_field :profile_id, value: Current.profile.id, type: :hidden %>
-</div>
-<div>
-    <%= f.check_box :pending, value: true, type: :hidden %>
-</div>
+  <div>
+      <%= f.number_field :profile_id, value: Current.profile.id, type: :hidden %>
+  </div>
+  
+  <div>
+      <%= f.number_field :school_id, value: Current.profile.school_id, type: :hidden %>
+  </div>
+
   <div class="actions">
-    <%= f.submit "Submit Order" %>
+    <%= f.submit "Submit Order", data:{turbo:false} %>
   </div>
 
 

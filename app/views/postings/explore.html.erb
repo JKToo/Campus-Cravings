@@ -1,8 +1,10 @@
 
-<div class="home_text_card">
-    <p class="home_text"> Hey ! Tell other users about your experience and recommendations. Friends or not, every opinion matters. Help other cravers decide what they want to eat or should try! </p>
-    <%= link_to "Post", add_post_path, class: "home_post_button"%>       
-</div>  
+<br/><div class="jumbotron jumbotron-fluid" >
+  <div class="container" style="text-align:center">
+    <h1 class="display-4">Explore other Campuses</h1>
+    <p class="lead">See what others had for lunch . . .</p>
+  </div>
+</div>
 <br/> 
 <%@ordered = @allPostings.shuffle%>
 <%= turbo_frame_tag "explore_turbo", class: "feed_post_rows"  do %>

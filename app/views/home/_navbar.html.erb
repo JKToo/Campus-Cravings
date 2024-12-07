@@ -1,12 +1,16 @@
-<div class="flex">
-    <h2 class="logo">Campus Cravings</h2> 
+<div class="navbar">
+    <h2 class="logo ">Campus Cravings</h2> 
+
     
     <div class="nav">
-        <ul class = "nav-items" >
+        <ul class = "nav-items  " >
+            <div class="searchbar_div">
+   <%=render "search/form"%>
+    </div>
             <strong>            
                 <% if Current.profile %>
                      <li> 
-                    <%= link_to_active_class('Feed', 'active', root_path, class:'') %>
+                    <%= link_to_active_class('Feed', 'active', root_path, class:'', style: 'margin-left: 15px') %>
                     </li>
                     <li> 
                         <%= link_to_active_class('Explore', 'active', explore_path, class:'') %>
@@ -14,27 +18,29 @@
                     <li> 
                         <%= link_to_active_class('Order', 'active', home_order_path, class:'') %>
                     </li>
+                 
+
+                        <%if Current.profile.status%>
+                            <li> 
+                                <%= link_to_active_class('Jobs', 'active', request_path, class:'') %>
+                            </li>
+                        <%end%>
+
+                        
                     <li> 
                         <%= link_to_active_class('Profile', 'active', about_path, class:'') %>
                     </li>
-                        <%if Current.profile.status%>
-                            <li> 
-                                <%= link_to_active_class('Requests', 'active', request_path, class:'') %>
-                            </li>
-                        <%end%>
+                        
                     <li>
-                        <%= link_to "Sign Out", logout_path, data: { "turbo-method": :delete }%>                    
+                        <%= link_to image_tag("signout.png", size: 20), logout_path, data: { "turbo-method": :delete }%>                    
                     </li>
-                    
-                <%# <%else 
-                    <li>
-                        <%= link_to_active_class('Sign In', 'active', sign_in_path, class:'')                     
-                    </li>
-                    <li>
-                        <%= link_to_active_class('Sign Up', 'active', sign_up_path, class:'')                     
-                    </li> %>
+
+                   
                 <%end%>
             </strong>
         </ul>
+        
     </div>
+     
+
 </div>

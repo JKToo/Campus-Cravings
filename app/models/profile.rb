@@ -6,4 +6,13 @@ class Profile < ApplicationRecord
   has_many :order
   accepts_nested_attributes_for :school
   accepts_nested_attributes_for :posting
+
+
+  def self.ransackable_attributes(auth_object = nil)
+    [ "fname", "lname", "tag" ]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    [ "" ]
+    end
 end

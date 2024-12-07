@@ -1,0 +1,13 @@
+
+<table>
+    <thead>
+        <tr>
+            <th> <%= sort_link(@q1, :fname, "place")%></th>
+            </tr>
+        </thead>
+        <tbody>
+            <%@profiles.each do |i|%>
+            <td> <%=link_to i.fname, root_path%>
+            <%end%>
+            </tbody>
+    </table>
