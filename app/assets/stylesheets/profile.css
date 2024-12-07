@@ -22,7 +22,7 @@
     width: 100%;
     grid-template-areas:     
       'avatar  name name name right'
-      'avatar  footer footer footer right';
+      'user  footer footer footer right';
     gap: 10px;
     background-color: transparent;
     padding: 10px;
@@ -45,11 +45,19 @@
 }
 .item2_text2{
     font-size: 20px;
+    margin: 0px 20px 0px 20px
+}
+
+.name{
+    grid-area: user;
+    text-align: center;
+    margin-top: -10px;
+    font-size: 25px;
+    font-family: Josefin Bold;
 }
 
 .item3 {
     margin-top: 5%;
-    margin-left: 15%;
     grid-area: avatar; 
     background-color: #000000;
     border: 5px solid #ffffff;
@@ -71,13 +79,13 @@
 .item5 { 
     grid-area: footer;
     font-size: 20px;
-    display: flex;
 }
 
 
 .status{
     background-color: rgb(32, 168, 231);
-    padding: 5px;
+    padding: 2%;
+    margin-left: 2%;
     border-radius: 20px;
 
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
