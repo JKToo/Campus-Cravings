@@ -7,13 +7,22 @@
     <div class="item2_text1"> 
      @<%= Current.profile.tag%>
     </div>  
-    <div class="item2_text2">
-      <%@schoolname = School.find_by(id: Current.profile.school_id)%>
+    
+<div class="item2_text2">
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book
+    </div>
+  </div>  
+  <div class="name" >
+      
+    <%= Current.profile.fname %> 
+    <%= Current.profile.lname %> 
+    <div style="font-family: Josefin Italic">
+       <%@schoolname = School.find_by(id: Current.profile.school_id)%>
     <%= @schoolname.name %>
     </div>
-
-  </div>  
+    </div>
   <div class="item3">
+    
     <%if Current.profile.avatar?%>
       <%= image_tag(Current.profile.avatar, class: "comment-avatar")%> 
     <%else%>
