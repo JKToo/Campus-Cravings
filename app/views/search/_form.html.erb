@@ -1,10 +1,9 @@
 <div class="search-box">
 
 <%= search_form_for @q1, url: search_path do |f| %>
-    <button class="btn-search"></button>
+    <button class="btn-search"><i class="fas fa-search"></i></button>
 
-    <%= f.search_field :fname_cont, placeholder: "Search...", class:"input-search", autosave: false, onsearch: true%>
-        <%= f.submit "⌕", data:{turbo:false}, class: "search_submit_icon"%>
+    <%= f.search_field :fname_cont, placeholder: "Search...", class:"input-search"%>
 <%end%>
 </div>
 

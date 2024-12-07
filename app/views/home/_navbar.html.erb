@@ -4,6 +4,9 @@
     
     <div class="nav">
         <ul class = "nav-items  " >
+            <div class="searchbar_div">
+   <%=render "search/form"%>
+    </div>
             <strong>            
                 <% if Current.profile %>
                      <li> 
@@ -30,9 +33,7 @@
                         <%= link_to "Sign Out", logout_path, data: { "turbo-method": :delete }%>                    
                     </li>
 
-                   <div class="searchbar_div">
-   <%=render "search/form"%>
-    </div>
+                   
                 <%end%>
             </strong>
         </ul>
