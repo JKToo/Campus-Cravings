@@ -6,8 +6,8 @@ class PostingsController < ApplicationController
   def index
     if session[:user_id]
       @postings_main = Posting.all
-      @pagy, @postings = pagy_countless(Posting.where(school_id: Current.profile.school_id), limit: 3)
-
+      @temp = Posting.where(school_id: Current.profile.school_id).order("created_at DESC").limit(Posting.count)
+      @pagy, @postings = pagy_countless(@temp, limit: 5)
 
       respond_to do |format|
         format.html { render :index }

@@ -12,7 +12,7 @@
 <br/> 
 <%@ordered = @postings.sort_by(&:created_at)%>
 <%= turbo_frame_tag "feed", class: "feed_post_rows"  do %>
- <%= render @ordered%>
+ <%= render @postings%>
 <%end%>   
 
 <%= turbo_frame_tag :pagination,
