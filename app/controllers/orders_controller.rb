@@ -18,6 +18,16 @@ class OrdersController < ApplicationController
     end
   end
 
+  def destroy
+    @orders = params[:param_to_del]
+    @del = Order.find_by(id: @orders)
+    @del.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to home_order_path, status: :see_other, notice: "Order was successfully canclled." }
+      format.json { head :no_content }
+    end
+  end
 
   def renderReq
   end
