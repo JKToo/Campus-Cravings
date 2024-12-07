@@ -18,6 +18,15 @@ class OrdersController < ApplicationController
     end
   end
 
+  def destroy
+    @orders = params[:param_to_del]
+    @del = Order.find_by(id: @orders)
+    if @del.destroy!
+      redirect_to home_order_path, notice: "Order has been cancelled"
+    else
+      render :new, notice: "Error"
+    end
+  end
 
   def renderReq
   end

@@ -1,4 +1,11 @@
 <%if Current.user%>
+ <% if notice %>
+           <p class="notice1"><%= notice %></p> 
+    <% end %>
+    
+    <% if alert %>
+       <p class="alert2 alert-warning "><%= alert %></p>
+      <%end%>
     <div class="home_text_card">
         <p class="home_text"> Hey <%= Current.profile.fname %>, This is the list of your previous orders </p>
         <%# <button class="home_post_button"> Post </button> %>
@@ -30,8 +37,11 @@
                 <h6 class="card-subtitle mb-2 text-muted">Tip: $<%= oP.tip.round(2) %></h6>
                 <hr/>
                 <p class="card-text">    <%=  oP.order%></p>
-                <%= link_to "Cancel Order", order_path, class: "card_action_button"%>  
+                
             </div>
+            <%@currOrder = Order.find_by(id: oP.id)%>
+                <%= link_to "Cancel Order", cancel_order_path(param_to_del: @currOrder), 
+  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "card_action_button"%>  
         </div>
     <%end%>
     </div>

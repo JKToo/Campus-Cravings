@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post "add_comment", to: "comments#create"
   get "about", to: "postings#about"
   get "search", to: "search#index"
+  delete "cancel_order", to: "orders#destroy"
   get "explore", to: "postings#explore"
   get "home/order"
   # get "home/signin"
