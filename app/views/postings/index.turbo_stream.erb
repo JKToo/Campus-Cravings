@@ -1,4 +1,4 @@
-<%@ordered = @postings.sort_by(&:place)%>
+<%@ordered = @postings.sort_by(&:created_at)%>
 
 <%= turbo_stream.append "feed" do %>
   <%= render @ordered %>

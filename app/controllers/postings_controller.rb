@@ -20,7 +20,7 @@ class PostingsController < ApplicationController
   end
 
   def explore
-    @temp = Posting.order("RANDOM()").limit(Posting.count)
+    @temp = Posting.order("created_at DESC").limit(Posting.count)
       @pagy, @allPostings = pagy_countless(@temp, limit: 5)
 
 

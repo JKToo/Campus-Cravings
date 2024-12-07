@@ -1,9 +1,12 @@
 <%@day = ((DateTime.now - p.created_at.to_datetime)).to_i%>
           <%@hours = ((DateTime.now - p.created_at.to_datetime) * 24 ).to_i%>
-          <%@minutes = ((DateTime.now - p.created_at.to_datetime) * 24 * 60).to_i%>
+          <%@minutes = ((DateTime.now - p.created_at.to_datetime) * 1440).to_i%>
+          <%@temp = ((DateTime.now - p.updated_at.to_datetime) * 1440).to_i%>
           <small class="text-body-secondary">
         <div class="card-footer">
-          <%if @minutes < 59%>
+          <%if @minutes < 1 %>
+            Posted a few seconds ago
+          <%elsif @minutes < 59 and @minutes > 1 %>
             Posted <%=@minutes %> minutes ago
           <%elsif @hours < 24%>
             Posted <%=@hours %> hours ago
