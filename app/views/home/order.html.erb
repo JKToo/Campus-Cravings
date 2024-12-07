@@ -1,4 +1,11 @@
 <%if Current.user%>
+ <% if notice %>
+           <p class="notice1"><%= notice %></p> 
+    <% end %>
+    
+    <% if alert %>
+       <p class="alert2 alert-warning "><%= alert %></p>
+      <%end%>
     <div class="home_text_card">
         <p class="home_text"> Hey <%= Current.profile.fname %>, This is the list of your previous orders </p>
         <%# <button class="home_post_button"> Post </button> %>
