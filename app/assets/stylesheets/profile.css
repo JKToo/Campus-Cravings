@@ -3,8 +3,9 @@
     width:70%;
     height: 30vh;
     font-family: Josefin Thin;
-    /* background-color: #892be2af; */
-    background-image: url("bg-tester.png");
+    background: linear-gradient(90deg, rgba(138,43,226,1) 0%, rgba(248,132,29,1) 62%, rgba(138,43,226,1) 100%);
+
+    /* background-image: url("bg-tester.png"); */
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 20px;

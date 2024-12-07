@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
     @orders = Order.new(order_params)
 
     if @orders.save
-      redirect_to home_about_path, notice: "Order Successfully Placed"
+      redirect_to root_path, notice: "Order Successfully Placed"
 
     else
       render :new, notice: "Error"
@@ -29,7 +29,7 @@ class OrdersController < ApplicationController
     @request1 = Order.find_by(id: attributes[:id])
     @request = Order.where(id: attributes[:id]).update!(delivery_status: [ attributes[:profile_id], 0 ], pending: false)
     if @request1 != @request
-      redirect_to request_path, notice: "Order Successfully Placed"
+      redirect_to request_path, notice: "Task Successfully Claimed"
 
     else
       render :new, notice: "Error"
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:restaurant, :order, :total, :tip, :profile_id)
+    params.require(:order).permit(:restaurant, :order, :total, :tip, :profile_id, :school_id, :address)
   end
 
   def request_params
