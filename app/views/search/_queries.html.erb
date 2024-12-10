@@ -1,0 +1,21 @@
+
+
+  <%@profiled.each do |i|%>
+            <div class="card " style="width: 25rem; ">
+
+                <%=link_to i.fname, root_path%>
+        
+
+                <div class="card-avatar">
+                    <%if i.avatar?%>
+                        <%= link_to image_tag(i.avatar, class: "comment-avatar circle card-avatar"), profile_path(i.id), data:{turbo:false}%> 
+                    <%else%>
+                        <%= link_to image_tag("https://static.vecteezy.com/system/resources/previews/020/911/747/non_2x/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png", class: "comment-avatar circle card-avatar"), profile_path(i.profile.id), data:{turbo:false}%> 
+                    <%end%>
+                    </div>
+                <h5 class="card-title">@<%= i.tag %></h5>
+                <h6 class="card-subtitle"><%= School.find_by(id: i.school_id).name %></h6>
+
+            </div>
+
+  <%end%>
