@@ -2,29 +2,39 @@
 
 
 
-
-<p style="color: green"><%= notice %></p>
-
-
 <div class="profile_block">
   <div class="grid-container">
   <div class="item2">  
-    <div class="item2_text1"> 
+    <div class="item2_text1"  style="display:flex"> 
      @<%= profile.tag%>
-    </div>  
-    <div class="item2_text2">
-      <%@schoolname = School.find_by(id: profile.school_id)%>
-    <%= @schoolname.name %>
-    </div>
 
+    <%@schoolname = School.find_by(id: profile.school_id)%>
+   <div class="school" >
+    <%= @schoolname.name %>
+    </div>  
+    </div>  
+
+<div class="item2_text2">
+    <%=profile.bio%>
+    </div>
   </div>  
+  <div class="name" >
+      
+    <%= profile.fname %> 
+    <%= profile.lname %> 
+
+    </div>
   <div class="item3">
-        <%= image_tag(profile.avatar, class: "comment-avatar ")%> 
+    
+  <%if profile.avatar?%>
+    <%= image_tag(profile.avatar, class: "comment-avatar")%> 
+  <%else%>
+    <%= image_tag("https://static.vecteezy.com/system/resources/previews/020/911/747/non_2x/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png", class: "comment-avatar")%> 
+  <%end%>
   </div>  
-  <div class="item4"></div>
   <div class="item5"> 
 
-<div class="container status">
+<div class="container status" style="width: 80%">
   <div class="row">
     <div class="col-sm " style="margin-left: 5%">
     ✍️ <%=profile.posting.count%>  Reviews 

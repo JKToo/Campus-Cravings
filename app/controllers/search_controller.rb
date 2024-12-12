@@ -8,7 +8,7 @@ class SearchController < ApplicationController
     @profiler = @q1.result(distinct: true)
 
 
-    @pagy, @profiled = pagy_countless(@profiler, limit: 5)
+    @pagy, @profiled = pagy_countless(@profiler, limit: 4)
     @pagy2, @posts = pagy_countless(@postings, limit: 5)
 
     respond_to do |format|

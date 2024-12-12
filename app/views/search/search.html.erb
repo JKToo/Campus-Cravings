@@ -1,39 +1,15 @@
 
 <div style="display:flex; width: 100%; overflow-x: hidden; ">
-    <div style="width: 45%; text-align:center; margin-left: 2.5%; margin-right: 5%">
-        <h1 class="search_category"> Profiles </h1>
+    <div style="text-align:center; width: 100%">
+        <h1 class="search_category" > Profiles </h1>
 
         <%= turbo_frame_tag "search_profiles", class: "feed_post_rows" do %>
             <%= render "search/queries"%>
         <%end%>
     </div>
-
-    <div style="width: 45%; text-align:center; ">
-        <h1 class="search_category"> Posting </h1>
-        <%= turbo_frame_tag "search_posts", class: "feed_post_rows" do %>
-            <%= render "search/post_queries"%>
-        <%end%>
-    </div>
-
-        <%= turbo_frame_tag :pagination,
-            loading: :lazy,
-            src: search_path(format: :turbo_stream) , class: "feed_post_rows" do %>
-            <div class="relative flex justify-center items-center">
-                <div class="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-purple-500"></div>
-                <%=image_tag ("CC2.png"),  class:"rounded-full h-28 w-28"%>
-            </div>
-        <%end%>  
-
-
-        <%= turbo_frame_tag :pagination,
-            loading: :lazy,
-            src: search_path(format: :turbo_stream) , class: "feed_post_rows" do %>
-            <div class="relative flex justify-center items-center">
-                <div class="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-purple-500"></div>
-                <%=image_tag ("CC2.png"),  class:"rounded-full h-28 w-28"%>
-            </div>
-        <%end%>  
 </div>
+
+
 
 
 
