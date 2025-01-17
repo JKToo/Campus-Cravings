@@ -9,7 +9,7 @@ class Profile < ApplicationRecord
 
 
   def self.ransackable_attributes(auth_object = nil)
-    [ "fname", "lname", "tag" ]
+    [ "fname", "lname", "tag", "avatar" ]
   end
 
   def self.ransackable_associations(auth_object = nil)

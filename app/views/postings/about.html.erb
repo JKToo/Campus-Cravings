@@ -4,10 +4,15 @@
 <div class="profile_block">
   <div class="grid-container">
   <div class="item2">  
-    <div class="item2_text1"> 
+    <div class="item2_text1"  style="display:flex"> 
      @<%= Current.profile.tag%>
+
+    <%@schoolname = School.find_by(id: Current.profile.school_id)%>
+   <div class="school" >
+    <%= @schoolname.name %>
     </div>  
-    
+    </div>  
+
 <div class="item2_text2">
     <%=Current.profile.bio%>
     </div>
@@ -16,17 +21,14 @@
       
     <%= Current.profile.fname %> 
     <%= Current.profile.lname %> 
-    <div style="font-family: Josefin Italic; font-size: 22px">
-       <%@schoolname = School.find_by(id: Current.profile.school_id)%>
-    <%= @schoolname.name %>
-    </div>
+
     </div>
   <div class="item3">
     
-    <%if Current.profile.avatar?%>
-      <%= image_tag(Current.profile.avatar, class: "comment-avatar")%> 
-    <%else%>
-      <%= image_tag("https://static.vecteezy.com/system/resources/previews/020/911/747/non_2x/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png", class: "comment-avatar")%> 
+  <%if Current.profile.avatar?%>
+    <%= image_tag(Current.profile.avatar, class: "comment-avatar")%> 
+  <%else%>
+    <%= image_tag("https://static.vecteezy.com/system/resources/previews/020/911/747/non_2x/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png", class: "comment-avatar")%> 
   <%end%>
   </div>  
   <div class="item5"> 

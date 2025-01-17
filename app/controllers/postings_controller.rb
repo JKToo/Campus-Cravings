@@ -50,7 +50,7 @@ class PostingsController < ApplicationController
   end
 
   def about
-    @pagy, @profile_postings = pagy_countless(Posting.where(profile_id: Current.profile.id), limit: 3)
+    @pagy, @profile_postings = pagy_countless(Posting.where(profile_id: Current.profile.id).order("created_at DESC"), limit: 3)
     respond_to do |format|
       format.html { render :about }
       format.turbo_stream { render :about }
