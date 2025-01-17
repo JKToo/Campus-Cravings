@@ -6,7 +6,7 @@
        <p class="alert2 alert-warning "><%= alert %></p>
       <%end%>
     <div class="home_text_card">
-        <p class="home_text"> Hey <%= @profile.fname %>! Tell other users about your experience and recommendations. Friends or not, every opinion matters. Help other cravers decide what they want to eat or should try! </p>
+        <p class="home_text"> Hey <%= Current.user %>! Tell other users about your experience and recommendations. Friends or not, every opinion matters. Help other cravers decide what they want to eat or should try! </p>
         <%= link_to "Post", add_post_path, class: "home_post_button"%>       
     </div>  
    <br/> 

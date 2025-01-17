@@ -1,25 +1,32 @@
-<h2>Tell us about your experience</h2>
+<div class="modal">
+<div class="m-auto modal_card">
+  <div style="text-align:center; margin-bottom: 20px">
+
+<h2>Tell us about your experience</h2></div>
 <%= form_with model: @postings, url: add_post_path do |f| %>
-  <div class="field">
-    <%= f.label :place %><br />
-    <%= f.text_field :place, autofocus: true%>
+    <div class="form-floating">
+    <%= f.text_field :place, autofocus: true, class: "form-control", placeholder: "Place"%>
+    <%= f.label :place, 'Place', for:"floatingInput" %><br />
   </div>
 
- <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_field :description, autofocus: true%>
+ <div class="form-floating">
+    <%= f.text_field :description, autofocus: true, class: "form-control", placeholder: "Description"%>
+    <%= f.label :description, 'Description', for:"floatingInput"  %><br />
   </div>
-  <div class="field">
-    <%= f.label :rating %><br />
-    <%= f.text_field :rating, autofocus: true%>
+  
+ <div class="form-floating">
+    <%= f.text_field :rating, autofocus: true, class: "form-control", placeholder: "Rating"%>
+    <%= f.label :rating, 'Rating', for:"floatingInput" %><br />
   </div>
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location, autofocus: true%>
+
+  <div class="form-floating">
+    <%= f.text_field :location, autofocus: true, class: "form-control", placeholder: "Location"%>
+    <%= f.label :location, 'Location', for:"floatingInput" %><br />
   </div>
-  <div class="field">
-    <%= f.label :img, 'Image Link' %><br />
-    <%= f.text_field :img, autofocus: true%>
+
+  <div class="form-floating">
+    <%= f.text_field :img, autofocus: true, class: "form-control", placeholder: "Image"%>
+    <%= f.label :img, 'Image Url', for:"floatingInput" %><br />
   </div>
 
   <div class="field">
@@ -31,11 +38,12 @@
     <%= f.number_field :school_id, value: Current.profile.school_id, type: :hidden %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Post" %>
-  </div>
 
 
+  <%= link_to 'Cancel',  :back, data:{turbo:false}, class:" input-group-submit-invert" %>
+  <%= f.submit "Post Review", data:{turbo:false}, class:" input-group-submit"%>
   
 <% end %>
 
+</div>
+</div>

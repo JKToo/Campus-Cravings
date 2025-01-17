@@ -30,6 +30,7 @@
   --bs-card-spacer-x: 0rem;
   --bs-card-spacer-y: 0rem;
 }
+
 .card-img-top-about{
   max-height: 450px;
 }
@@ -56,6 +57,12 @@
 .card-body-height{
   min-height: 700px;
   max-height: 700px;
+  overflow: auto;
+}
+
+.card-body-height-search{
+  min-height: 200px;
+  max-height: 600px;
   overflow: auto;
 }
 
