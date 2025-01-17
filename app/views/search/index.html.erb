@@ -1,24 +1,9 @@
-<%# <div data-controller="carousel" class="swiper">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">Slide 1</div>
-    <div class="swiper-slide">Slide 2</div>
-    <div class="swiper-slide">Slide 3</div>
-  </div>
-</div> %>
 
-<%# <table> %>
-    <%# <thead> %>
-        <%# <tr> %>
-            <%# <th>  %>
-              <%# <%= sort_link(@q1, :fname, "place")%>
-              <%# </th> %>
-            <%# </tr> %>
-        <%# </thead> %>
 <div class="feed_post_rows">
 
             <%@profiles.each do |i|%>
 
-          <div class="card " style="width: 21rem;">
+          <div class="card " style="width: 22rem;">
                 <div class="card-body card-body-height-search" >       
                     
                         <div class="card-avatar">
@@ -28,7 +13,7 @@
                                 <%= link_to image_tag("https://static.vecteezy.com/system/resources/previews/020/911/747/non_2x/user-profile-icon-profile-avatar-user-icon-male-icon-face-icon-profile-icon-free-png.png", class: "comment-avatar circle card-avatar"), profile_path(i.id), data:{turbo:false}%> 
                             <%end%>
                               </div>
-                        <h5 class="card-title">@<%= i.tag %></h5>
+                        <h5 class="card-title">@!<%= i.tag %></h5>
                         <h6 class="card-subtitle"><%= School.find_by(id: i.school_id).name %></h6>
 
                               
@@ -41,4 +26,3 @@
 
             <%end%>
 </div>  
-    <%# </table> %>
