@@ -65,6 +65,6 @@ end
 
 gem "mini_magick", "~> 4.9.3"
 
-gem "tailwindcss-rails", "~> 3.0"
+gem "tailwindcss-rails", "~> 3.3"
 
 gem "ransack", "~> 4.2"
