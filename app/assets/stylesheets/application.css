@@ -197,6 +197,8 @@
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.2), 0 5px 10px 0 rgba(0,0,0,0.19);
 }
 
+
+
 .modal_card{
   height: 80vh;
   width: 50vw;
@@ -207,7 +209,15 @@
     background-color: rgb(255, 255, 255);
 }
 
-
+.modal_card2{
+  height: 60vh;
+  width: 50vw;
+    padding: 3%;
+  background-color: black;
+    box-shadow: 0px 1px 1px 0px;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+}
 
 .input-modal-submit{
   float:center;
@@ -259,3 +269,48 @@
 }
 
 
+
+
+
+
+
+.input-group-submit2{
+  margin-top: 5%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  float:center;
+  text-align: center;
+  background-color: #8A2BE2;
+  border-radius: 5px 20px 5px;
+  color:white;
+  width: 30%;
+
+}
+
+.input-group-submit2:hover{
+  border-radius: 20px 5px 20px;
+  background-color: #FF8911;
+  width: 30%;
+
+}
+
+
+.input-group-submit2-invert{
+  margin-top: 5%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 20px 5px 20px;
+  float:left;
+  text-align: center;
+  background-color: #8A2BE2;
+  color:white;
+  width: 30%;
+
+}
+
+.input-group-submit2-invert:hover{
+  border-radius: 5px 20px 5px;
+  background-color: #FF8911;
+  width: 30%;
+
+}

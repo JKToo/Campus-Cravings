@@ -1,4 +1,6 @@
-<%= form_with(model: profile) do |form| %>
+<div class="modal">
+<div class="m-auto modal_card2">
+<%= form_with(model: profile) do |f| %>
   <% if profile.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
@@ -11,38 +13,40 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :fname, 'First Name', style: "display: block" %>
-    <%= form.text_field :fname %>
+<div class="form-floating ">
+    <%= f.text_field :fname, class: "form-control", id:"floatingInput", autofocus: true, autocomplete: "first name", placeholder: "First Name"%>
+    <%= f.label :fname, 'First Name', for:"floatingInput", style: "display: block" %>
   </div>
 
-  <div>
-    <%= form.label :lname, 'Last Name', style: "display: block" %>
-    <%= form.text_field :lname %>
+  <div class="form-floating ">
+    <%= f.text_field :lname, class: "form-control", id:"floatingInput", autofocus: true, autocomplete: "last name", placeholder: "Last Name"%>
+    <%= f.label :lname, 'Last Name', for:"floatingInput", style: "display: block" %>
   </div>
 
-  <div>
-    <%= form.label :tag, 'Display', style: "display: block" %>
-    <%= form.text_field :tag %>
+    <div class="form-floating ">
+    <%= f.text_field :tag, class: "form-control", id:"floatingInput", autofocus: true, autocomplete: "tag", placeholder: "Tag"%>
+    <%= f.label :tag, 'Tag', for:"floatingInput", style: "display: block" %>
   </div>
 
-  <div>
-    <%= form.label :school_id, 'School', style: "display: block" %>
 
-     <%= form.collection_select :school_id, School.order(:name),:id,:name, include_blank: true, value: :school_id%>
 
+  <div >
+    <%= f.label :school_id, 'School', style: "display: block" %>
+     <%= f.collection_select :school_id, School.order(:name),:id,:name, include_blank: true, value: :school_id%>
+    <%= f.label :status, 'Distributor', style: "display: block" %>
+    <%= f.check_box :status %>
   </div>
 
-  <div>
-    <%= form.label :status, 'Distributor', style: "display: block" %>
-    <%= form.check_box :status %>
+  <div style="text-align:center">
+
   </div>
- <div>
-    <%= form.number_field :user_id, value: Current.user.id, type: :hidden %>
+ <div class="form-floating ">
+    <%= f.number_field :user_id, value: Current.user.id, type: :hidden %>
   </div>
   
   <div>
-    <%= form.submit data:{turbo:false} %>
+    <%= f.submit data:{turbo:false}, class:"input-group-submit2" %>
 
   </div>
 <% end %>
+</div></div>
