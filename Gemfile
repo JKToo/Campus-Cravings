@@ -20,7 +20,7 @@ gem "jbuilder"
 # gem "redis", ">= 4.0.1"
 
 gem "faker"
-gem("psych", "~> 4")
+gem("psych", "~> 5")
 
 gem "kaminari"
 gem "pagy", "~> 9.3" # omit patch digit
